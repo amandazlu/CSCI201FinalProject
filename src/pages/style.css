@@ -1,0 +1,35 @@
+input{
+    width: 35%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    margin-bottom: 30px;
+    box-sizing: border-box;
+    border-radius: 2px;
+    background-color: #D9D9D9;
+}
+
+input:focus {
+    border: 3px solid #1c2275;
+}
+
+#input-form {
+    padding-left: 30%;
+    top: 0px;
+    width: 80rem;
+    text-align: left;
+}
+#input-form label {
+    margin: 1px;
+    display:block;
+}
+.guest-button {
+    padding: 5px 45px 5px 45px !important;
+}
+#input-form button {
+    padding: 5px 20px 5px 20px;
+    background-color: #A2A5EE;
+    margin: 10px 30px;
+    margin-left:0;
+    font-weight: bold;
+    font-size: 14px;
+}

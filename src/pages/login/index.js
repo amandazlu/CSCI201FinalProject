@@ -21,7 +21,7 @@ const Login = () => {
                     <button type="button">Sign Up</button>
                 </div>
                 <div>
-                    <button type="button">Continue As Guest</button>
+                    <button type="button" className="guest-button">Continue As Guest</button>
                 </div>
             </form>
         </div>
