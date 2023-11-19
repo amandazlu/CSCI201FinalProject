@@ -1,6 +1,6 @@
 import React from "react";
 import "./Box.css";
-import Header from "../pages/Header";
+import Header from "../Header";
 import {useNavigate} from"react-router-dom";
 
 function EventBox() {
