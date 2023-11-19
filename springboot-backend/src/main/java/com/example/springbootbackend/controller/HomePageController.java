@@ -43,9 +43,9 @@ public class HomePageController {
 	}
 	
 	// update event rest api
-	// TODO(sophiakrugler): figure out if we need this method
+	// TODO: Decide which fields should be allowed to be modified (most likely just number of seats left)
 	@PutMapping("/homepage/{id}")
-	public ResponseEntity<Event> updateEmployee(@PathVariable Long id, @RequestBody Event eventDetails){
+	public ResponseEntity<Event> updateEvent(@PathVariable Long id, @RequestBody Event eventDetails){
 		Event event = eventRepository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Event not exist with id :" + id));
 		

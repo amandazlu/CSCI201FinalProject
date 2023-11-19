@@ -31,7 +31,7 @@ public class Ticket {
 
     public Ticket(String ticket_type, Event event, User user) {
 		super();
-		this.ticket_type = ticket_type;
+		this.ticket_type = ticket_type; // TODO: validate ticket type?
         this.event = event;
         this.user = user;
 	}
@@ -53,5 +53,11 @@ public class Ticket {
 	}
 	public void setUser(User user) {
 		this.user = user;
+	}
+	public void setTicketType(String type){
+		this.ticket_type = type;
+	}
+	public String getTicketType(){
+		return this.ticket_type;
 	}
 }

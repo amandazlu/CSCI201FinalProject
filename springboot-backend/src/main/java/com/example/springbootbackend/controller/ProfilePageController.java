@@ -20,8 +20,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.springbootbackend.exception.ResourceNotFoundException;
 import com.example.springbootbackend.model.User;
 import com.example.springbootbackend.model.Ticket;
+import com.example.springbootbackend.model.Event;
 import com.example.springbootbackend.repository.UserRepository;
 import com.example.springbootbackend.repository.TicketRepository;
+import com.example.springbootbackend.repository.EventRepository;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
@@ -33,6 +35,9 @@ public class ProfilePageController {
 
     @Autowired
     private TicketRepository ticketRepository;
+
+    @Autowired
+    private EventRepository eventRepository;
 	
 	// get user. user contains set of tickets.
     // TODO: may not want the username in the url. try to find another way to pass the information.
@@ -58,6 +63,20 @@ public class ProfilePageController {
 
         if(user.hasTicket(ticket)){
             ticketRepository.delete(ticket);
+            // Update event: 
+            Event event = ticket.getEvent();
+            String ticket_type = ticket.getTicketType();
+            if(ticket_type.equals("VIP")){
+                event.setVipTicketsLeft(event.getVipTicketsLeft() + 1);
+            }
+            else if(ticket_type.equals("FLOOR")){
+                event.setFloorTicketsLeft(event.getFloorTicketsLeft() + 1);
+            }
+            else if(ticket_type.equals("GENAD")){
+                event.setGenadTicketsLeft(event.getGenadTicketsLeft() + 1);
+            }
+            eventRepository.save(event);
+
             Map<String, Boolean> response = new HashMap<>();
             response.put("deleted", Boolean.TRUE);
             return ResponseEntity.ok(response);
