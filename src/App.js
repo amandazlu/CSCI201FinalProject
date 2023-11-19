@@ -9,6 +9,8 @@ import Signup from './pages/signup/signup';
 import EventBox from './pages/EventHome';
 import Header from './pages/Header';
 
+import Profile from './pages/profilepage';
+
 
 function App() {
   return (
@@ -22,6 +24,7 @@ function App() {
                 <Route path='/log-in' element={<Login />} />
                 <Route path = '/event-box' element = {<EventBox/>}/>
                 <Route path = 'header' element = {<Header/>}/>
+                <Route path = '/profilepage' element = {<Profile/>}/>
             </Routes>
         </Router>
     </div>
