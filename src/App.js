@@ -10,6 +10,8 @@ import EventBox from './pages/EventHome/EventBox';
 import Header from './pages/Header/Header';
 import EventPage from './pages/EventPage/EventPage';
 
+import Profile from './pages/profilepage';
+
 
 function App() {
   return (
@@ -24,6 +26,7 @@ function App() {
                 <Route path = '/event-box' element = {<EventBox/>}/>
                 <Route path = '/header' element = {<Header/>}/>
                 <Route path='/event-page' element = {<EventPage/>}/>
+                <Route path = '/profilepage' element = {<Profile/>}/>
             </Routes>
         </Router>
     </div>
