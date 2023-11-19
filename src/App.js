@@ -6,8 +6,9 @@ import { BrowserRouter as Router, Routes, Route }
 import Login from './pages/login';
 import Signup from './pages/signup/signup';
 
-import EventBox from './pages/EventHome';
-import Header from './pages/Header';
+import EventBox from './pages/EventHome/EventBox';
+import Header from './pages/Header/Header';
+import EventPage from './pages/EventPage/EventPage';
 
 
 function App() {
@@ -21,7 +22,8 @@ function App() {
                 <Route path='/sign-up' element={<Signup />} />
                 <Route path='/log-in' element={<Login />} />
                 <Route path = '/event-box' element = {<EventBox/>}/>
-                <Route path = 'header' element = {<Header/>}/>
+                <Route path = '/header' element = {<Header/>}/>
+                <Route path='/event-page' element = {<EventPage/>}/>
             </Routes>
         </Router>
     </div>
