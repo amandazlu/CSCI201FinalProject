@@ -18,7 +18,7 @@ const ProfilePage = () => {
             <br/>
             <br/>
 
-            <div className="container">
+            <div className="container1">
                 <div className="welcome">
                     <p>Welcome!</p>
                     <p>USC Email: <input type="email" value="USCEmail" disabled /></p>
@@ -35,6 +35,15 @@ const ProfilePage = () => {
                     }
                 </div>
             </div>
+
+
+            <div className="container2">
+                <p className="welcome-message">Welcome!</p>
+                <p>You are currently a guest user, please sign up or sign in for reservation and profile service.</p>
+                <button type="button">Sign in</button>
+                <button type="button">Sign up</button>
+            </div>
+
         </div>
     )
 }
