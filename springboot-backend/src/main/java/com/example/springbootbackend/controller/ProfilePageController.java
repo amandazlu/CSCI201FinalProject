@@ -21,32 +21,51 @@ import com.example.springbootbackend.exception.ResourceNotFoundException;
 import com.example.springbootbackend.model.User;
 import com.example.springbootbackend.model.Ticket;
 import com.example.springbootbackend.repository.UserRepository;
+import com.example.springbootbackend.repository.TicketRepository;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
-@RequestMapping("/api/v1/")
+@RequestMapping("/api/v1/profile/")
 public class ProfilePageController {
 
 	@Autowired
 	private UserRepository userRepository;
+
+    @Autowired
+    private TicketRepository ticketRepository;
 	
 	// get user. user contains set of tickets.
     // TODO: may not want the username in the url. try to find another way to pass the information.
-	@GetMapping("/profile/{email}")
-	public ResponseEntity<User> getUser(@PathVariable String email){
+	// May also want to check that the user is verified before returning the data.
+    @GetMapping("{email}")
+	public ResponseEntity<Map<User, Set<Ticket>>> getUser(@PathVariable String email){
         User user = userRepository.findById(email)
             .orElseThrow(() -> new ResourceNotFoundException("User not exist with email :" + email));
-        return ResponseEntity.ok(user);
-	}	
-    
-    // TODO: merge this into the profile page (should not be a separate url)
-    @GetMapping("/profile/{email}/tickets")
-	public Set<Ticket> getTickets(@PathVariable String email){
+        Map<User, Set<Ticket>> response = new HashMap<>();
+        response.put(user, user.getTickets());
+        return ResponseEntity.ok(response);
+	}
+
+    // delete employee rest api
+    // TODO: this isn't tested since we need to be able to create a delete request
+    // and simply navigating to the url won't trigger this method
+	@DeleteMapping("{email}/{id}")
+	public ResponseEntity<Map<String, Boolean>> deleteTicket(@PathVariable String email, @PathVariable Long id){
+		Ticket ticket = ticketRepository.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Ticket not exist with id :" + id));
         User user = userRepository.findById(email)
-        .orElseThrow(() -> new ResourceNotFoundException("User not exist with email :" + email));
-        return user.getTickets();
-	}	
-	
-    // TODO: add method for removing tickets
-    // TODO: implement exceptions for resource not found
+                .orElseThrow(() -> new ResourceNotFoundException("User not exist with email :" + email));
+
+        if(user.hasTicket(ticket)){
+            ticketRepository.delete(ticket);
+            Map<String, Boolean> response = new HashMap<>();
+            response.put("deleted", Boolean.TRUE);
+            return ResponseEntity.ok(response);
+        }
+        else{
+            Map<String, Boolean> response = new HashMap<>();
+            response.put("deleted", Boolean.FALSE);
+            return ResponseEntity.ok(response);
+        }
+	}
 }

@@ -80,5 +80,8 @@ public class User {
     public void addTicket(Ticket ticket){
         this.tickets.add(ticket);
     }
+	public boolean hasTicket(Ticket ticket){
+		return tickets.contains(ticket);
+	}
 
 }
