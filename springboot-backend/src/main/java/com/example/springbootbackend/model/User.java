@@ -22,7 +22,7 @@ public class User {
 	@Column(name = "verified")
 	private boolean verified;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="user")
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy="user")
     @JsonBackReference
 	private Set<Ticket> tickets;
 	
@@ -82,6 +82,9 @@ public class User {
     }
 	public boolean hasTicket(Ticket ticket){
 		return tickets.contains(ticket);
+	}
+	public boolean removeTicket(Ticket ticket){
+		return tickets.remove(ticket);
 	}
 
 }

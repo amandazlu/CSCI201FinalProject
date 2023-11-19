@@ -14,12 +14,12 @@ public class Ticket {
 	private String ticket_type;
 
     // Foreign key
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "event_id", referencedColumnName = "id")
     private Event event;
 
      // Foreign key
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "user_id", referencedColumnName = "email")
     @JsonManagedReference
 	private User user;

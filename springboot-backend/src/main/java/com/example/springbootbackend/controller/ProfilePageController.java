@@ -62,20 +62,23 @@ public class ProfilePageController {
                 .orElseThrow(() -> new ResourceNotFoundException("User not exist with email :" + email));
 
         if(user.hasTicket(ticket)){
-            ticketRepository.delete(ticket);
+            // Remove the ticket from the user
+            user.removeTicket(ticket); // TODO: check removal is a success
             // Update event: 
             Event event = ticket.getEvent();
             String ticket_type = ticket.getTicketType();
-            if(ticket_type.equals("VIP")){
+            if(ticket_type.equals("vip")){
                 event.setVipTicketsLeft(event.getVipTicketsLeft() + 1);
             }
-            else if(ticket_type.equals("FLOOR")){
+            else if(ticket_type.equals("floor")){
                 event.setFloorTicketsLeft(event.getFloorTicketsLeft() + 1);
             }
-            else if(ticket_type.equals("GENAD")){
+            else if(ticket_type.equals("genad")){
                 event.setGenadTicketsLeft(event.getGenadTicketsLeft() + 1);
             }
             eventRepository.save(event);
+            userRepository.save(user);
+            ticketRepository.delete(ticket);
 
             Map<String, Boolean> response = new HashMap<>();
             response.put("deleted", Boolean.TRUE);
