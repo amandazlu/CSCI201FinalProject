@@ -1,0 +1,80 @@
+.type {
+    display : inline-block;
+    padding : 5%;
+}
+
+p { margin: 0; }
+
+.grid {
+    display : grid;
+    position: relative;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows : repeat(12, 1fr);
+    height : 20vw;
+    width : 20vw;
+    border-radius: 5%;
+}
+
+.image, .box{
+    grid-row: 1 / 2;
+}
+
+.image, .event-header {
+    grid-row : 1 / 2;
+}
+
+.iamge, .event-location {
+    grid-row : 2 / 3
+}
+
+.image {
+    height: 100%;
+    width : 100%;
+    grid-column: 1 / 13;
+    grid-row : 1 / 13;
+    object-fit: cover;
+    border-radius: 5%;
+}
+
+.event-header {
+    font-size: 0.8vw;
+    grid-column: 1 / 4;
+    text-align: left;
+    padding-left: 15%;
+    padding-top: 15%;
+    color : white;
+}
+
+.event-location {
+    font-size: 0.8vw;
+    grid-column: 1 / 6;
+    text-align: left;
+    padding-left: 9%;
+    padding-top: 5%;
+    color : white;
+}
+
+.box {
+    height : 60%;
+    width : 100%;
+    grid-column : 5 / 12;
+    grid-row : 1 / 13;
+    align-self: center;
+    vertical-align: left;
+    background-color: white;
+    border-radius: 5%;
+    position : relative;
+}
+
+.reserve-button {
+   border-radius: 0.8vw;
+   font-size: 0.8vw;
+   text-align: center;
+
+   position : absolute;
+   width : 50%;
+   height : 15%;
+   right : 10%;
+   bottom : 10%;
+}
+
