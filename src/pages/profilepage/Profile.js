@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './style.css';
-import ProfileHeader from "../ProfileHeader/ProfileHeader";
+import ProfileHeader from "../ProfileHeader/profileheader";
 import { useNavigate } from "react-router-dom";
 
 const ProfilePage = () => {
