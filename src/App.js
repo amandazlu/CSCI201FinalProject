@@ -10,6 +10,7 @@ import EventBox from './pages/EventHome/EventBox';
 import Header from './pages/Header/Header';
 import EventPage from './pages/EventPage/EventPage';
 
+import ProfileHeader from './pages/ProfileHeader/profileheader';
 import Profile from './pages/profilepage/Profile';
 
 
