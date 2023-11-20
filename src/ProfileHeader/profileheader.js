@@ -3,7 +3,7 @@ import "./profileheader.css";
 import { useState } from 'react';
 import {Navigate} from"react-router-dom";
 
-function Header() {
+function ProfileHeader() {
     const [show, setShow] = useState(false);
     const [profile, setProfile] = useState(false);
     const [logOut, setLogOut] = useState(false);
@@ -38,4 +38,4 @@ function Header() {
     );
 }
 
-export default Header;
+export default ProfileHeader;

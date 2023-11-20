@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './style.css';
-import Header from "../Header/Header";
+import ProfileHeader from "../ProfileHeader/ProfileHeader";
 import { useNavigate } from "react-router-dom";
 
 const ProfilePage = () => {
@@ -49,7 +49,7 @@ const ProfilePage = () => {
 
     return (
         <div>
-            <Header />
+            <ProfileHeader />
             {content}
         </div>
     );
