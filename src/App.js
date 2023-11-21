@@ -7,10 +7,9 @@ import Login from './pages/login';
 import Signup from './pages/signup/signup';
 
 import EventBox from './pages/EventHome/EventBox';
-import Header from './pages/Header/Header';
 import EventPage from './pages/EventPage/EventPage';
 
-import Profile from './pages/profilepage';
+import Profile from './pages/profilepage/Profile';
 
 
 function App() {
@@ -20,11 +19,10 @@ function App() {
             <Navbar />
             <Routes>
                 {/* <Route exact path='/' element={<Home />} /> */}
-                <Route path='/log-in' element={<Login />} />
+                <Route path='/' element={<Login />} />
                 <Route path='/sign-up' element={<Signup />} />
                 <Route path='/log-in' element={<Login />} />
                 <Route path = '/event-box' element = {<EventBox/>}/>
-                <Route path = '/header' element = {<Header/>}/>
                 <Route path='/event-page' element = {<EventPage/>}/>
                 <Route path = '/profilepage' element = {<Profile/>}/>
             </Routes>
