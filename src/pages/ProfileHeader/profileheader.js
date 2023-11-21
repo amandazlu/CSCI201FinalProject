@@ -1,9 +1,9 @@
-import "./header.css";
+import "./profileheader.css";
 
 import { useState } from 'react';
 import {Navigate} from"react-router-dom";
 
-function Header() {
+function ProfileHeader() {
     const [show, setShow] = useState(false);
     const [profile, setProfile] = useState(false);
     const [logOut, setLogOut] = useState(false);
@@ -21,7 +21,7 @@ function Header() {
 
         <div className = "header">
             <img src="/images/home_icon.png" alt="Home Image" className = "header-homeicon"/>
-            <p className = "header-text">Events</p>
+            <p className = "header-text">Profile</p>
             <img src="/images/profile_icon.png" alt="Profile Image" className = "header-profileicon" onClick={showDropDown}/>
         </div>
 
@@ -38,4 +38,4 @@ function Header() {
     );
 }
 
-export default Header;
+export default ProfileHeader;

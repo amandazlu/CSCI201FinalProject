@@ -8,6 +8,8 @@ function EventBox() {
 
     const message = "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.";
 
+    const apiRoute = "http://localhost:3000/api/v1/homepage";
+
     return (
         <div>
             <Header/>

@@ -9,6 +9,7 @@ import Signup from './pages/signup/signup';
 import EventBox from './pages/EventHome/EventBox';
 import EventPage from './pages/EventPage/EventPage';
 
+import ProfileHeader from './pages/ProfileHeader/profileheader';
 import Profile from './pages/profilepage/Profile';
 
 
@@ -21,7 +22,6 @@ function App() {
                 {/* <Route exact path='/' element={<Home />} /> */}
                 <Route path='/' element={<Login />} />
                 <Route path='/sign-up' element={<Signup />} />
-                <Route path='/log-in' element={<Login />} />
                 <Route path = '/event-box' element = {<EventBox/>}/>
                 <Route path='/event-page' element = {<EventPage/>}/>
                 <Route path = '/profilepage' element = {<Profile/>}/>
