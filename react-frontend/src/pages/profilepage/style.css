@@ -1,0 +1,62 @@
+.container1 {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+.welcome {
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+.ticket, .guest {
+    background-color: #f4f4f4;
+    margin: 10px 0;
+    padding: 20px;
+    text-align: center;
+}
+.profile-actions {
+    text-align: center;
+    margin-top: 20px;
+}
+button {
+    padding: 10px 20px;
+    margin: 0 5px;
+}
+
+  .container2 {
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    padding: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
+    box-sizing: border-box; /* Include padding in the width */
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    font-size: 48px;
+    margin: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    text-align: left;
+  }
+
+  button {
+    background-color: #A2A5EE;
+    color: black;
+    font-size: 24px;
+    font-style: bold;
+    border: none;
+    margin: 10px;
+    cursor: pointer;
+    width: 202px;
+    height: 63px
+  }
+  button:hover {
+    background-color: #A2A5EE;
+  }
