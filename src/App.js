@@ -23,7 +23,7 @@ function App() {
                 <Route path='/sign-up' element={<Signup />} />
                 <Route path = '/event-box' element = {<EventBox/>}/>
                 <Route path='/event-page' element = {<EventPage/>}/>
-                <Route path = '/profilepage' element = {<Profile/>}/>
+                <Route path = '/profile' element = {<Profile/>}/>
             </Routes>
         </Router>
     </div>

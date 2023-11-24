@@ -10,7 +10,16 @@ const ProfilePage = () => {
     // const [tickets, setTickets] = useState([]); // Initialize tickets state as an empty array
 
     // Dummy function to simulate login/logout
-    const handleLogin = () => setIsLoggedIn(true);
+    // const handleLogin = () => setIsLoggedIn(true);
+
+    const handleLogin = () => {
+        navigate('/'); // redirect to the path of login page
+    };
+
+    const handleSignup = () => {
+        navigate('/sign-up'); // redirect to the path of signup page
+    }
+
     const handleLogout = () => setIsLoggedIn(false);
 
 
@@ -62,7 +71,7 @@ const ProfilePage = () => {
                 <p className="welcome-message">Welcome!</p>
                 <p>You are currently a guest user, please sign up or sign in for reservation and profile service.</p>
                 <button type="button" onClick={handleLogin}>Sign in</button>
-                <button type="button">Sign up</button>
+                <button type="button" onClick={handleSignup}>Sign up</button>
             </div>
         );
     }
@@ -70,6 +79,8 @@ const ProfilePage = () => {
     return (
         <div>
             <ProfileHeader />
+            <br/>
+			<br/>
             {content}
         </div>
     );
