@@ -40,6 +40,14 @@ const Login = () => {
         }
     };
     
+    const handleClick1 = async(e) => {
+        navigate('/sign-up');
+    };
+
+    const handleClick2 = async(e) => {
+        navigate('/event-box');
+    };
+
     return (
         <div id="input-form">
             <h1>
@@ -57,10 +65,10 @@ const Login = () => {
                 <div>
                     <button type="submit">Sign In</button>
                     {errorMessage && <div className="error"> {errorMessage} </div>}
-                    <button type="button">Create an Account</button>
+                    <button type="button" onClick={handleClick1}>Create an Account</button>
                 </div>
                 <div>
-                    <button type="button" className="guest-button">Continue As Guest</button>
+                    <button type="button" className="guest-button" onClick={handleClick2}>Continue As Guest</button>
                 </div>
             </form>
         </div>
