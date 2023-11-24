@@ -13,7 +13,9 @@ function ProfileHeader() {
         else {setShow(true);}
     }
 
-    if (profile) { return <Navigate to="/profile"/> }
+    // if (profile) { 
+    //     return <Navigate to="/profile"/> 
+    // }
     if (logOut) { return <Navigate to="/logout"/> }
 
     return (
@@ -28,7 +30,7 @@ function ProfileHeader() {
         {!show && (<div className = "white-space"/>)}
         
         {show && (<div className = "drop-down">
-                    <p className='drop-down-item' onClick={() => {setProfile(true)}}>Profile</p>
+                    <p className='drop-down-item' onClick={() => {setShow(false)}}>Profile</p>
                     <p className='drop-down-item' onClick={() => {setLogOut(true)}}>Log Out</p>
                   </div>)
         }
