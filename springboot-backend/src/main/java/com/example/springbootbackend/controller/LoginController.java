@@ -37,9 +37,15 @@ import com.example.springbootbackend.repository.EventRepository;
  */
 @RestController
 @RequestMapping("/api/v1/")
+@CrossOrigin(origins = "http://localhost:3000")
 public class LoginController {
 	private UserRepository userRepository;
 	
+	@Autowired
+    public LoginController(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
 	@PostMapping("/login")
 	public ResponseEntity<String> login(@RequestParam("email") String email, @RequestParam("password") String password) {
 		Optional<User> userOptional = userRepository.findById(email);

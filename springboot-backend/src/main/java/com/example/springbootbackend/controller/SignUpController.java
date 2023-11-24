@@ -39,6 +39,7 @@ import com.example.springbootbackend.repository.EventRepository;
 //@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/api/v1/")
+@CrossOrigin(origins = "http://localhost:3000")
 public class SignUpController {
 
 	@Autowired
