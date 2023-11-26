@@ -41,9 +41,12 @@ import com.example.springbootbackend.repository.EventRepository;
 @RequestMapping("/api/v1/")
 @CrossOrigin(origins = "http://localhost:3000")
 public class SignUpController {
-
-	@Autowired
 	private UserRepository userRepository;
+    
+    @Autowired
+    public SignUpController(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 	
 	//Frontend constructs a user on signup page in this implementation
 	@PostMapping("/signup")

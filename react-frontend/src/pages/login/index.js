@@ -49,28 +49,31 @@ const Login = () => {
     };
 
     return (
-        <div id="input-form">
-            <h1>
-                Login
-            </h1>
-            <form onSubmit={handleLogin}>
-                <div>
-                    <label htmlFor="email" className="text-left">USC Email</label>
-                    <input name="USC Email" id="email" type="text" value={email} onChange={(e) => setEmail(e.target.value)}/>
-                </div>
-                <div>
-                    <label htmlFor="password" className="text-left">Password</label>
-                    <input name="Password" id="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
-                </div>
-                <div>
-                    <button type="submit">Sign In</button>
+        <div>            
+            <div className="logoHeader">Ticket Pro</div>
+            <div id="input-form">
+                <h3>
+                    Login
+                </h3>
+                <form onSubmit={handleLogin}>
+                    <div>
+                        <label htmlFor="email" className="text-left">USC Email</label>
+                        <input name="USC Email" id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+                    </div>
+                    <div>
+                        <label htmlFor="password" className="text-left">Password</label>
+                        <input name="Password" id="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                    </div>
                     {errorMessage && <div className="error"> {errorMessage} </div>}
-                    <button type="button" onClick={handleClick1}>Create an Account</button>
-                </div>
-                <div>
-                    <button type="button" className="guest-button" onClick={handleClick2}>Continue As Guest</button>
-                </div>
-            </form>
+                    <div>
+                        <button type="submit">Sign In</button>
+                        <button type="button" onClick={handleClick1}>Create an Account</button>
+                    </div>
+                    <div>
+                        <button type="button" className="guest-button" onClick={handleClick2}>Continue As Guest</button>
+                    </div>
+                </form>
+            </div>
         </div>
     );
 };
