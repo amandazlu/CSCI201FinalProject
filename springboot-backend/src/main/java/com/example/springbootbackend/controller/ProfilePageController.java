@@ -51,6 +51,7 @@ public class ProfilePageController {
 	// get user. user contains set of tickets.
     // TODO: may not want the username in the url. try to find another way to pass the information.
 	// May also want to check that the user is verified before returning the data.
+    /* 
     @GetMapping("/")
     public String displayProfile(HttpServletResponse response) throws IOException {
     	HttpSession mySession = httpServletRequest.getSession(false);
@@ -65,6 +66,7 @@ public class ProfilePageController {
     	
     	return "redirect:/profile";
     }
+    */
     
     
     @GetMapping("/")
