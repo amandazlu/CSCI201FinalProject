@@ -12,6 +12,12 @@ public class Event {
     @Column(name = "name")
 	private String event_name;
 
+	@Column(name = "description")
+	private String event_description;
+
+	@Column(name = "location")
+	private String event_location;
+
 	@Column(name = "date")
 	private String event_date;
 
@@ -40,11 +46,14 @@ public class Event {
 		
 	}
 
-    public Event(String name, String date, String time, int floor_tickets_left, 
+    public Event(String name, String description, String location,
+				String date, String time, int floor_tickets_left, 
                 int vip_tickets_left, int genad_tickets_left, float floor_ticket_price,
                 float vip_ticket_price, float genad_ticket_price) {
 		super();
 		this.event_name = name;
+		this.event_description = description;
+		this.event_location = location;
         this.event_date = date;
         this.event_time = time;
         this.floor_tickets_left = floor_tickets_left;
@@ -60,6 +69,18 @@ public class Event {
 	}
 	public void setId(long id) {
 		this.id = id;
+	}
+	public String getEventDescription() {
+		return event_description;
+	}
+	public void setEventDescription(String des) {
+		this.event_description = des;
+	}
+	public String getEventLocation() {
+		return event_location;
+	}
+	public void setEventLocation(String loc) {
+		this.event_location = loc;
 	}
 	public String getEventName() {
 		return event_name;
