@@ -23,7 +23,7 @@ const Login = () => {
             });
             if (response.status === 200) {
                 // Handle successful login here, e.g., store token in local storage
-                navigate('/event-box');
+                navigate('/event-home');
                 console.log('Login successful');
             } else {
                 // Handle unsuccessful login

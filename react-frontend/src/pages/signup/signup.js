@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Modal from "../modal/modal";
 import "../style.css"
 
 const Signup = () => {
@@ -10,8 +11,7 @@ const Signup = () => {
     const [lname, setLname] = useState("");
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
-
-    const User = (email, fname, lname, password, verified) => { return { email: email, fname: fname, lname: lname, password: password, verified: verified } }
+    const [successMessage, setSuccessMessage] = useState("");
     
     const handleClick1 = async(e) => {
         navigate('/');
@@ -19,27 +19,32 @@ const Signup = () => {
 
     const handleSignup = async (e) => {
         e.preventDefault();
-        if(!CompareFields('password', 'password2')) return;
+        if(!CompareFields('password', 'password2')){
+            setErrorMessage("Passwords must match");
+            return;
+        } 
         try {
             // console.log('email: ', email);
             // console.log('password: ', password);
-            const newUser = User(email, fname, lname, password, 1);
             const response = await axios.post('http://localhost:8080/api/v1/signup', null, {
                 params: {
-                    newUser,
+                    email,
+                    fname,
+                    lname,
+                    password,
                 },
             });
             if (response.status === 200) {
                 // Handle successful registration here
-                navigate('/');
                 console.log(response.data);
+                setSuccessMessage("Registration Successful!");
             } else {
                 // Handle unsuccessful login
                 setErrorMessage(response.data);
                 console.error('Registration failed: ', response.data);
             }
         } catch (error) {
-            if(error.response && error.response.status === 401){
+            if(error.response && (error.response.status === 401 || error.response.status === 409)){
                 setErrorMessage(error.response.data);
                 console.error('Registration failed: ', error.response.data);
             }
@@ -49,24 +54,20 @@ const Signup = () => {
         }
     };
 
-    const handleChange = async (e) =>{
-
-    }
-
     function CompareFields(f1, f2){
         var val1 = document.getElementById(f1).value;
         var val2 = document.getElementById(f2).value;
         val1 = val1.replace(/^\s*/,"");
         val1 = val1.replace(/\s*$/,"");
-        if( val1.length == 0 ) { return true; }
+        if( val1.length === 0 ) { return true; }
         val2 = val2.replace(/^\s*/,"");
         val2 = val2.replace(/\s*$/,"");
-        if( val2.length == 0 ) { return true; }
-        if( val1 == val2 ) { return true; }
+        if( val2.length === 0 ) { return true; }
+        if( val1 === val2 ) { return true; }
         // An alert box is used for verification failures.
         // The message may be changed as appropriate for your installation.
         // Or, replace alert(...) with your preferred error message system.
-        alert("The passwords must match");
+        //alert("The passwords must match");
         return false;
     };
 
@@ -103,6 +104,26 @@ const Signup = () => {
                         <button type="button" onClick={handleClick1}>Back to Login</button>                    
                     </div>
                 </form>
+                {errorMessage && (
+                    <Modal
+                        primaryButtonClick={()=>setErrorMessage("")}
+                        primaryButtonName='Okay'
+                    >
+                        <br />
+                        <span style={{ color: 'red', fontSize: '24px', lineHeight: '72px' }}>Error Found: {errorMessage}</span>
+                        <br />
+                    </Modal>
+                )}
+                {successMessage && (
+                    <Modal
+                        primaryButtonClick={()=>{setSuccessMessage(""); handleClick1()}}
+                        primaryButtonName='Back to Login'
+                    >
+                        <br />
+                        <span style={{ color: 'green', fontSize: '24px', lineHeight: '72px' }}>{successMessage}</span>
+                        <br />
+                    </Modal>
+                )}
             </div>
         </div>
     );

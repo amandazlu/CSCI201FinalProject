@@ -50,11 +50,13 @@ public class SignUpController {
 	
 	//Frontend constructs a user on signup page in this implementation
 	@PostMapping("/signup")
-    public ResponseEntity<String> registerUser(@RequestBody User user) {
-		Optional<User> userOptional = userRepository.findById(user.getEmail());
+    public ResponseEntity<String> registerUser(@RequestParam("email") String email, @RequestParam("fname") String fname,
+        @RequestParam("lname") String lname, @RequestParam("password") String password) {
+		Optional<User> userOptional = userRepository.findById(email);
         if (userOptional.isPresent()) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Email already exists");
         }
+        User user = new User(fname, lname, email, password, false, null);
         userRepository.save(user);
         return ResponseEntity.ok("Registration successful");
     }
