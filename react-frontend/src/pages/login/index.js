@@ -47,7 +47,7 @@ const Login = () => {
     };
 
     const handleClick2 = async(e) => {
-        navigate('/event-box');
+        navigate('/event-home');
     };
 
     return (
