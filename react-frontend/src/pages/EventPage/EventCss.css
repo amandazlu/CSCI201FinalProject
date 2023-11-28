@@ -12,6 +12,7 @@ body {
     padding: 2%;
     position: relative;
     top: -2em;
+    z-index: -1;
 }
 
 .eventhead-text {
@@ -45,15 +46,15 @@ body {
 }
 
 .ticket {
-    display: grid;
-    width: 5em;
-    grid-template-columns: auto 1fr auto;
-    height: auto;
+    width: 5.5em;
+    height: 3em;
     padding: 3%;
+    margin: 3%;
     background-color: #EBEFFF;
     border-radius: 5%;
     position: relative;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    color: black;
 }
 
 .ticket > p:first-child {
@@ -63,36 +64,23 @@ body {
     margin-bottom: 0.5em;
 }
 
-.ticket > p:last-child {
-    font-size: 0.8vw;
-    color: #666;
-    margin-bottom: 1em;
-}
-
 .ticket button {
     background-color: #A2A5EE;
     color: white;
     border: none;
     padding: 0.5em 1em;
+    width: 6em;
+    height: 3em;
     font-size: 1vw;
     cursor: pointer;
     border-radius: 0.8vw;
     position: absolute;
-    bottom: 10%;
-    right: 10%;
+    bottom: 0;
+    right: 5%;
+    font-size: 1vw;
+    text-align: center;
 }
 
-.reserve-button {
-   border-radius: 0.8vw;
-   font-size: 0.8vw;
-   text-align: center;
-
-   position : absolute;
-   width : 50%;
-   height : 15%;
-   right : 10%;
-   bottom : 10%;
-}
 
 .ticket button:hover {
     background-color: #555;
