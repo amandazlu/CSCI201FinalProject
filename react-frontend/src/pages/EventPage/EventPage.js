@@ -66,25 +66,19 @@ function Event(props) {
 			            <p className="event-header" style = {{fontWeight: "bold", fontSize: "1.5vw", textAlign: "left", padding: "3%", color:"black"}}>Floor Tickets</p>
 			            <p className="event-price" style = {{fontWeight: "bold", fontSize: "1vw", textAlign: "left", padding: "3%", color:"black"}}>Price: ${floorTicketPrice}</p>
 			            <p className="event-location" style = {{fontWeight: "bold", fontSize: "1vw", textAlign: "left", padding: "3%", color:"black"}}>{floorTicketsLeft} available</p>
-			            <div className="box">
-			                <button className="reserve-button">Reserve</button>
-			            </div>
+			            <button className="reserve-button">Reserve</button>
 			        </div>
 			        <div className="ticket">
 			            <p className="event-header" style = {{fontWeight: "bold", fontSize: "1.5vw", textAlign: "left", padding: "3%", color:"black"}}>General Admission</p>
 			            <p className="event-price" style = {{fontWeight: "bold", fontSize: "1vw", textAlign: "left", padding: "3%", color:"black"}}>Price: ${genadTicketPrice}</p>
 			            <p className="event-location" style = {{fontWeight: "bold", fontSize: "1vw", textAlign: "left", padding: "3%", color:"black"}}>{genadTicketsLeft} available</p>
-			            <div className="box">
-			                <button className="reserve-button">Reserve</button>
-			            </div>
+			            <button className="reserve-button">Reserve</button>
 			        </div>
 			        <div className="ticket">
 			            <p className="event-header" style = {{fontWeight: "bold", fontSize: "1.5vw", textAlign: "left", padding: "3%", color:"black"}}>VIP Admission</p>
 			            <p className="event-price" style = {{fontWeight: "bold", fontSize: "1vw", textAlign: "left", padding: "3%", color:"black"}}>Price: ${vipTicketPrice}</p>
 			            <p className="event-location" style = {{fontWeight: "bold", fontSize: "1vw", textAlign: "left", padding: "3%", color:"black"}}>{vipTicketsLeft} available</p>
-			            <div className="box">
-			                <button className="reserve-button">Reserve</button>
-			            </div>
+			            <button className="reserve-button">Reserve</button>
 			        </div>
 			    </div>
 			</div>
