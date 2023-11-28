@@ -28,6 +28,10 @@ import com.example.springbootbackend.model.User;
 import com.example.springbootbackend.model.Ticket;
 import com.example.springbootbackend.model.Event;
 import com.example.springbootbackend.repository.UserRepository;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
+
 import com.example.springbootbackend.repository.TicketRepository;
 import com.example.springbootbackend.repository.EventRepository;
 
@@ -40,6 +44,7 @@ import com.example.springbootbackend.repository.EventRepository;
 @CrossOrigin(origins = "http://localhost:3000")
 public class LoginController {
 	private UserRepository userRepository;
+	HttpServletRequest httpServletRequest;
 	
 	@Autowired
     public LoginController(UserRepository userRepository) {
@@ -49,6 +54,7 @@ public class LoginController {
 	@PostMapping("/login")
 	public ResponseEntity<String> login(@RequestParam("email") String email, @RequestParam("password") String password) {
 		Optional<User> userOptional = userRepository.findById(email);
+		
 		
 		if (!userOptional.isPresent()) {
 			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid email or password");
@@ -60,6 +66,12 @@ public class LoginController {
 		
 		//sets verification to true upon login
 		userOptional.get().setVerified(true);
+		
+		
+		// set email and password in session
+		HttpSession mySession = httpServletRequest.getSession();
+		mySession.setAttribute(email, password);
+		
 
 	    return ResponseEntity.ok("Login Successful");
 	}
