@@ -30,7 +30,6 @@ function Header() {
 
     return (
     <div>
-
         <div className = "header">
             <img src="/images/home_icon.png" alt="Home Image" className = "header-homeicon" onClick={logOutFunction}/>
             <p className = "header-text">Events</p>

@@ -41,7 +41,6 @@ function EventHome() {
         <div>
             <Header/>
             <br/>
-            <br/>
             
             <div className="horizontal-slider">
                 <EventBox image="party1.jpg"/>

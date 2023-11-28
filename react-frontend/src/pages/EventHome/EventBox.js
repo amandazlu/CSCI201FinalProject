@@ -1,6 +1,5 @@
 import React from "react";
 import "./Box.css";
-import Header from "../Header/Header";
 import {useNavigate} from"react-router-dom";
 import axios from 'axios';
 
