@@ -58,6 +58,10 @@ body {
     color: black;
 }
 
+.grid {
+    margin-left: 13%;
+}
+
 .ticket button {
     background-color: #A2A5EE;
     color: white;
