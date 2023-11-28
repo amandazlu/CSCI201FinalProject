@@ -44,7 +44,9 @@ import com.example.springbootbackend.repository.EventRepository;
 @CrossOrigin(origins = "http://localhost:3000")
 public class LoginController {
 	private UserRepository userRepository;
-	HttpServletRequest httpServletRequest;
+	
+	@Autowired
+	private HttpServletRequest httpServletRequest;
 	
 	@Autowired
     public LoginController(UserRepository userRepository) {
