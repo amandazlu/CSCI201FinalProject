@@ -4,10 +4,12 @@ import './style.css';
 import ProfileHeader from "../ProfileHeader/profileheader";
 import { useNavigate } from "react-router-dom";
 
+const apiRoute = "http://localhost:8080/api/v1/profile";
+
 const ProfilePage = () => {
     const navigate = useNavigate();
-    const [isLoggedIn, setIsLoggedIn] = useState(false); // Initialize logged-in state as false
-    // const [tickets, setTickets] = useState([]); // Initialize tickets state as an empty array
+    const [isLoggedIn, setIsLoggedIn] = useState(true); // Initialize logged-in state as false
+    // const [tickets, setTickets] = useState([]); // declare a state variable named tickets in a functional React component, initialized to an empty array, with a setter method setTickets to update its value.
 
     // Dummy function to simulate login/logout
     // const handleLogin = () => setIsLoggedIn(true);
@@ -29,13 +31,38 @@ const ProfilePage = () => {
         { name: 'Name#3', location: 'Location#3', time: 'Time#3'}
     ];
 
+       
+        // useEffect(() => {
+        //     axios.get(apiRoute)
+        //       .then(response => {
+        //         // Assuming response.data is an array of objects
+        //         // const user = response.data.find(event => event.id === id);
+        //         // setEventData(event);
+        //         // console.log(event);
+        //       })
+        //       .catch(error => {
+        //         console.log('Error fetching data:', error);
+        //       });
+        // }, [id]);
+       
+       
+        
+    useEffect(() => { 
+        axios.get(apiRoute).then(response => {
+        console.log(response.data);
+        // setData(response.data);
+        }).catch(error => { console.log('Error fetching data:', error);});
+    }, []);
+
     // useEffect(() => {
-    //     // Fetch tickets when the component mounts
     //     const fetchTickets = async () => {
     //         try {
-    //             const response = await axios.get(`http://localhost:8080/api/v1/profile/${userEmail}`);
-    //             // Assuming the response contains tickets in the desired format
-    //             setTickets(response.data[userEmail]);
+    //             const response = await axios.get(`http://localhost:8080/api/v1/profile`);
+    //             console.log(response.data);
+    //             // Assuming the response contains a map with email as key and tickets as value
+    //             const userEmail = Object.keys(response.data)[0]; // Get the first key (email)
+    //             setTickets(response.data[userEmail]); // Set tickets
+    //             setEmail(userEmail); // Set email
     //         } catch (error) {
     //             console.error("Error fetching tickets", error);
     //         }
@@ -44,7 +71,7 @@ const ProfilePage = () => {
     //     if (isLoggedIn) {
     //         fetchTickets();
     //     }
-    // }, [isLoggedIn, userEmail]);
+    // }, [isLoggedIn]);
 
     let content;
     if (isLoggedIn) {
