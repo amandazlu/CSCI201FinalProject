@@ -1,5 +1,7 @@
 package com.example.springbootbackend.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,6 +26,7 @@ import com.example.springbootbackend.model.Event;
 import com.example.springbootbackend.repository.UserRepository;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import com.example.springbootbackend.repository.TicketRepository;
@@ -49,6 +52,22 @@ public class ProfilePageController {
     // TODO: may not want the username in the url. try to find another way to pass the information.
 	// May also want to check that the user is verified before returning the data.
     @GetMapping("/")
+    public String displayProfile(HttpServletResponse response) throws IOException {
+    	HttpSession mySession = httpServletRequest.getSession(false);
+    	String email = (String) mySession.getAttribute("email");
+    	response.setContentType("text/html");
+    	PrintWriter out = response.getWriter();
+    	if (email == null) { //maybe .equals
+    		out.println("<p>You are a Guest User</p>");
+    	}else {
+    		out.println("<p>You are are logged in</p>");
+    	}
+    	
+    	return "redirect:/profile";
+    }
+    
+    
+    @GetMapping("/")
 	public ResponseEntity<Map<User, Set<Ticket>>> getUser(){
     	HttpSession mySession = httpServletRequest.getSession(false);
     	String email = (String) mySession.getAttribute("email");
@@ -58,6 +77,7 @@ public class ProfilePageController {
         response.put(user, user.getTickets());
         return ResponseEntity.ok(response);
 	}
+    //
 
     // delete employee rest api
     // TODO: this isn't tested since we need to be able to create a delete request
