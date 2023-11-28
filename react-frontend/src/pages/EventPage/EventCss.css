@@ -42,7 +42,8 @@ body {
 .type {
     width: 80%;
     position: relative;
-    top: -4em;
+    top: -3em;
+    margin-left: 10%;
 }
 
 .ticket {
@@ -55,13 +56,6 @@ body {
     position: relative;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     color: black;
-}
-
-.ticket > p:first-child {
-    font-weight: bold;
-    font-size: 0.8vw;
-    color: #333;
-    margin-bottom: 0.5em;
 }
 
 .ticket button {
