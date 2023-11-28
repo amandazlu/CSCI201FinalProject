@@ -68,8 +68,8 @@ const ProfilePage = () => {
     } else {
         content = (
             <div className="container2">
-                <p className="welcome-message">Welcome!</p>
-                <p>You are currently a guest user, please sign up or sign in for reservation and profile service.</p>
+                <p className="welcome-message" style = {{fontSize : "3vw", textAlign : "left" , padding : "3%"}}>Welcome!</p>
+                <p style = {{fontSize : "2vw", textAlign : "left" , padding : "3%"}}>You are currently a guest user, please sign up or sign in for reservation and profile service.</p>
                 <button type="button" onClick={handleLogin}>Sign in</button>
                 <button type="button" onClick={handleSignup}>Sign up</button>
             </div>
