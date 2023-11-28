@@ -29,11 +29,6 @@ Populating MySql Database
 - You should see that the databse now has data. 
 - Reload the page and see the events returned.
 
-Working pages so far: 
-- http://localhost:8080/api/v1/homepage
-- http://localhost:8080/api/v1/homepage/{id} where id is the id of an event in the database
-- http://localhost:8080/api/v1/profile/{email} where email is the email of a user in the databse
-
 
 
 
