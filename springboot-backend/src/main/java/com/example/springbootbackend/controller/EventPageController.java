@@ -63,22 +63,20 @@ public class EventPageController {
     private EventRepository eventRepo;
 
     @PostMapping("/homepage/{eventId}")
-    public String reserveTicket(@RequestParam("email") String userId, @RequestParam("ticketType") String type, @PathVariable Long eventId) {
-    // Your controller logic goes here
-        System.out.println("Reached reserve ticket function");
+    public ResponseEntity<String> reserveTicket(@RequestParam("email") String userId, @RequestParam("ticketType") String type, @PathVariable Long eventId) {
         // Invoke the asynchronous method
         int result = reserveTicketHelper(userId, type, eventId); // handle return value
 
         if(result == -3){
-            return "User could not be found.";
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("User could not be found.");
         }
         else if(result == -2){
-            return "Not enough tickets left.";
+            return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body("Not enough tickets left.");
         }
         else if(result == -1){
-            return "Event could not be found.";
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Event could not be found.");
         }
-        return "Ticket successfully reserved.";
+        return ResponseEntity.ok("Reservation was successful!");
     }
    
    
