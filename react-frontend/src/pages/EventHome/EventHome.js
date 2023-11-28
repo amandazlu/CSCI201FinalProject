@@ -50,8 +50,6 @@ function EventHome() {
                 <EventBox image="party3.jpg"/>
                 <EventBox image="party3.jpg"/>
             </div>
-
-            <button onClick={testRoute()}></button>
         </div>
     );
 

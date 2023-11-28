@@ -9,7 +9,7 @@ function EventBox(props) {
     const temp_message = "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.";
     
     return (
-        <div className = "type">
+        <div className = "type2">
                 <div className = "grid">
                         <img src={image_path} alt="Home Image" className = "image"/>
                         <p className = "event-header">Event 1</p>
