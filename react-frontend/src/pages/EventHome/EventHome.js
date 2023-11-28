@@ -8,8 +8,6 @@ import axios from 'axios';
 const apiRoute = "http://localhost:8080/api/v1/homepage";
 
 function EventHome() {
-    
-
     const [data, setData] = useState([]);
 
     useEffect(() => { axios.get(apiRoute).then(response => {

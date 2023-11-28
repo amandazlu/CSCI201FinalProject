@@ -12,8 +12,6 @@ function Event(props) {
 	const eventDescrip = "Lorem ipsum dolor sit amet, consectetur adipiscing elit...";
     return (
         <div>
-			<p>Eric Kim</p>
-			<p>{id}</p>
 			<Header/>
 			<div className="event">
 				<div className="eventhead">
