@@ -30,22 +30,22 @@ function Event() {
 				<p style = {{fontWeight: "bold", fontSize: "3vw", textAlign: "left", padding: "3%"}}>Tickets</p>
 			    <div className="grid">
 			        <div className="ticket">
-			            <p className="event-header">General Admission</p>
-			            <p className="event-location">140/200 available</p>
+			            <p className="event-header" style = {{fontWeight: "bold", fontSize: "1.5vw", textAlign: "left", padding: "3%"}}>General Admission</p>
+			            <p className="event-location" style = {{fontWeight: "bold", fontSize: "1vw", textAlign: "left", padding: "3%", color:"black"}}>140/200 available</p>
 			            <div className="box">
 			                <button className="reserve-button">Reserve</button>
 			            </div>
 			        </div>
 			        <div className="ticket">
-			            <p className="event-header">Floor Tickets</p>
-			            <p className="event-location">50/50 available</p>
+			            <p className="event-header" style = {{fontWeight: "bold", fontSize: "1.5vw", textAlign: "left", padding: "3%"}}>Floor Tickets</p>
+			            <p className="event-location" style = {{fontWeight: "bold", fontSize: "1vw", textAlign: "left", padding: "3%", color:"black"}}>50/50 available</p>
 			            <div className="box">
 			                <button className="reserve-button">Reserve</button>
 			            </div>
 			        </div>
 			        <div className="ticket">
-			            <p className="event-header">VIP Admission</p>
-			            <p className="event-location">50/50 available</p>
+			            <p className="event-header" style = {{fontWeight: "bold", fontSize: "1.5vw", textAlign: "left", padding: "3%"}}>VIP Admission</p>
+			            <p className="event-location" style = {{fontWeight: "bold", fontSize: "1vw", textAlign: "left", padding: "3%", color:"black"}}>50/50 available</p>
 			            <div className="box">
 			                <button className="reserve-button">Reserve</button>
 			            </div>
