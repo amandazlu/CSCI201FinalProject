@@ -22,10 +22,10 @@ function Header() {
         else {setLoggedIn(true);}
     }
 
-    if (profile) { return <Navigate to="/profilepage"/> }
-    if (logOut) { return <Navigate to="/logout"/> }
-    if (signIn) {return <Navigate to="/profilepage"/>}
-    if (signUp) { return <Navigate to="/logout"/> }
+    if (profile) { return <Navigate to="/profile"/> }
+    if (logOut) { return <Navigate to="/"/> }
+    if (signIn) {return <Navigate to="/"/>}
+    if (signUp) { return <Navigate to="/sign-up"/> }
 
 
     return (
