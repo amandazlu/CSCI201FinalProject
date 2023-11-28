@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Routes, Route }
 import Login from './pages/login';
 import Signup from './pages/signup/signup';
 
-import EventBox from './pages/EventHome/EventBox';
+import EventHome from './pages/EventHome/EventHome';
 import EventPage from './pages/EventPage/EventPage';
 
 import ProfileHeader from './pages/ProfileHeader/profileheader';
@@ -21,7 +21,7 @@ function App() {
                 {/* <Route exact path='/' element={<Home />} /> */}
                 <Route path='/' element={<Login />} />
                 <Route path='/sign-up' element={<Signup />} />
-                <Route path = '/event-box' element = {<EventBox/>}/>
+                <Route path = '/event-home' element = {<EventHome/>}/>
                 <Route path='/event-page' element = {<EventPage/>}/>
                 <Route path = '/profile' element = {<Profile/>}/>
             </Routes>
