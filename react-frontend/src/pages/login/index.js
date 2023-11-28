@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Modal from "../modal/modal";
 import "../style.css"
  
 const Login = () => {
@@ -65,7 +66,7 @@ const Login = () => {
                         <label htmlFor="password" className="text-left">Password</label>
                         <input name="Password" id="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
                     </div>
-                    {errorMessage && <div className="error"> {errorMessage} </div>}
+                    {/* {errorMessage && <div className="error"> {errorMessage} </div>} */}
                     <div>
                         <button type="submit">Sign In</button>
                         <button type="button" onClick={handleClick1}>Create an Account</button>
@@ -74,6 +75,16 @@ const Login = () => {
                         <button type="button" className="guest-button" onClick={handleClick2}>Continue As Guest</button>
                     </div>
                 </form>
+                {errorMessage && (
+                    <Modal
+                        primaryButtonClick={()=>setErrorMessage("")}
+                        primaryButtonName='Okay'
+                    >
+                        <br />
+                        <span style={{ color: 'red', fontSize: '24px', lineHeight: '72px' }}>Error Found: {errorMessage}</span>
+                        <br />
+                    </Modal>
+                )}
             </div>
         </div>
     );

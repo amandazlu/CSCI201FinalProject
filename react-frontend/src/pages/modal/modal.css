@@ -1,0 +1,23 @@
+.modal {
+    border-radius: 12px;
+    box-shadow: 5px 5px 15px 2px rgba(0, 0, 0, 0.25);
+    background-color: #FFF;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 2.75rem;
+    line-height: 2rem;
+    top: 30%;
+    left: 50%;
+    z-index: 99;
+    transform: translate(-50%, -50%);
+}
+
+.modal-wr {
+    display: flex;
+    z-index: 99;
+    height: 100%;
+    padding: 1rem 0;
+    flex-direction: column;
+    justify-content: space-between;
+}
