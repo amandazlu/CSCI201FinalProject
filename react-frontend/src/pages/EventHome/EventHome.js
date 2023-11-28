@@ -8,6 +8,8 @@ import axios from 'axios';
 const apiRoute = "http://localhost:8080/api/v1/homepage";
 
 function EventHome() {
+    
+
     const [data, setData] = useState([]);
 
     useEffect(() => { axios.get(apiRoute).then(response => {
@@ -19,11 +21,10 @@ function EventHome() {
     return (
         <div>
             <Header/>
-            <br/>
             
             <div className="horizontal-slider">
                 {data.map((item) => (
-                    <EventBox image="party1.jpg" id = {item.id} message = {item.eventName}/>
+                    <EventBox image="party1.jpg" key = {item.id} id = {item.id} name = {item.eventName} location = {item.eventLocation} message = {item.eventDescription}/>
                 ))}
             </div>
         </div>
