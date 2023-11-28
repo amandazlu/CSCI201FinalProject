@@ -14,7 +14,7 @@ function EventBox(props) {
         setEventId(id);
     }, [id]); 
 
-    if (profile) { return <Navigate to="/event-page"/> }
+    if (profile) { return <Navigate to="/event-page" state={{ id }}/> }
     
     return (
         <div className = "type2">

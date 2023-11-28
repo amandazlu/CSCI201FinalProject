@@ -1,10 +1,11 @@
 import React from "react"
 import "./EventCss.css"
 import Header from "../Header/Header";
-import {useNavigate} from"react-router-dom";
+import {useNavigate, useLocation} from"react-router-dom";
 
 function Event(props) {
-	const {id} = props;
+	const {state} = useLocation();
+	const {id} = state;
 	const navigate = useNavigate;
 	const eventName = "Event 1"
 	const eventVenue = "Lorem ipsum address";
