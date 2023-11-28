@@ -22,6 +22,10 @@ import com.example.springbootbackend.model.User;
 import com.example.springbootbackend.model.Ticket;
 import com.example.springbootbackend.model.Event;
 import com.example.springbootbackend.repository.UserRepository;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
+
 import com.example.springbootbackend.repository.TicketRepository;
 import com.example.springbootbackend.repository.EventRepository;
 
@@ -29,7 +33,9 @@ import com.example.springbootbackend.repository.EventRepository;
 @RestController
 @RequestMapping("/api/v1/profile/")
 public class ProfilePageController {
-
+	@Autowired
+	private HttpServletRequest httpServletRequest;
+	
 	@Autowired
 	private UserRepository userRepository;
 
@@ -42,8 +48,10 @@ public class ProfilePageController {
 	// get user. user contains set of tickets.
     // TODO: may not want the username in the url. try to find another way to pass the information.
 	// May also want to check that the user is verified before returning the data.
-    @GetMapping("{email}")
-	public ResponseEntity<Map<User, Set<Ticket>>> getUser(@PathVariable String email){
+    @GetMapping("/")
+	public ResponseEntity<Map<User, Set<Ticket>>> getUser(){
+    	HttpSession mySession = httpServletRequest.getSession(false);
+    	String email = (String) mySession.getAttribute("email");
         User user = userRepository.findById(email)
             .orElseThrow(() -> new ResourceNotFoundException("User not exist with email :" + email));
         Map<User, Set<Ticket>> response = new HashMap<>();
