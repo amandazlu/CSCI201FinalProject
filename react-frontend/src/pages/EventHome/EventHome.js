@@ -5,37 +5,18 @@ import Header from "../Header/Header";
 import {useNavigate} from"react-router-dom";
 import axios from 'axios';
 
+const apiRoute = "http://localhost:8080/api/v1/homepage";
+
 function EventHome() {
-    const navigate = useNavigate();
-
-    const apiRoute = "http://localhost:8080/api/v1/homepage";
-
-    function testRoute() {
-        return axios.get(apiRoute).then(res => {console.log(res);});
-    }
     
-    /*
-    // JavaScript Function to Create <EventBox> dynamically by traversing the SQL Database.
-    const [data, setData] = useState([]); // State to hold fetched data
-    const [isLoading, setIsLoading] = useState(true); // State to track loading status
 
-    useEffect(() => {
-        // Fetch data from SQL database using Axios
-        const fetchData = async () => {
-        try {
-            // Simulate fetching data (replace this with your actual API endpoint)
-            const response = await axios.get(apiRoute);
-            setData(response.data); // Update state with fetched data
-            setIsLoading(false); // Set loading to false after data is fetched
-        } catch (error) {
-            console.error('Error fetching data:', error);
-            setIsLoading(false); // Set loading to false in case of an error
-        }
-        };
+    const [data, setData] = useState([]);
 
-        fetchData(); // Call the fetch function
-    }, []); // Empty dependency array to fetch data only once on component mount
-    */
+    useEffect(() => { axios.get(apiRoute).then(response => {
+            console.log(response.data);
+            setData(response.data);
+        }).catch(error => { console.log('Error fetching data:', error);});
+    }, []);
 
     return (
         <div>
@@ -43,12 +24,9 @@ function EventHome() {
             <br/>
             
             <div className="horizontal-slider">
-                <EventBox image="party1.jpg"/>
-                <EventBox image="party2.jpeg"/>
-                <EventBox image="party3.jpg"/>
-                <EventBox image="party3.jpg"/>
-                <EventBox image="party3.jpg"/>
-                <EventBox image="party3.jpg"/>
+                {data.map((item) => (
+                    <EventBox image="party1.jpg" id = {item.id} message = {item.eventName}/>
+                ))}
             </div>
         </div>
     );

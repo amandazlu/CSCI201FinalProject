@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Box.css";
-import {useNavigate} from"react-router-dom";
+import {Navigate} from"react-router-dom";
 import axios from 'axios';
 
 function EventBox(props) {
-    const {image, message} = props;
+    const {image, id, message} = props;
+    const [eventId, setEventId] = useState(id);
+    const [profile, setProfile] = useState(false);
     const image_path = "/images/" + image;
     const temp_message = "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.";
+
+    useEffect(() => {
+        setEventId(id);
+    }, [id]); 
+
+    if (profile) { return <Navigate to="/event-page"/> }
     
     return (
         <div className = "type2">
@@ -16,9 +24,9 @@ function EventBox(props) {
                         <p className = "event-location">Los Angeles, CA</p>
                         <div className = "box">
                             <p style = {{fontWeight : "bold", fontSize : "0.8vw", textAlign : "left" , padding : "3%"}}>Description: </p>
-                            <p style = {{fontSize : "0.8vw", textAlign : "left" , padding : "3%"}}>{temp_message}</p>
+                            <p style = {{fontSize : "0.8vw", textAlign : "left" , padding : "3%"}}>{message}</p>
                             <br></br>
-                            <button className = "reserve-button">Reserve</button>
+                            <button className = "reserve-button" onClick={() => {setProfile(true)}}>Reserve</button>
                         </div>
                 </div>
             </div>
