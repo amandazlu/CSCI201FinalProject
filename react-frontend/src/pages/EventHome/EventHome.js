@@ -24,7 +24,7 @@ function EventHome() {
         const fetchData = async () => {
         try {
             // Simulate fetching data (replace this with your actual API endpoint)
-            const response = await axios.get('your-api-endpoint');
+            const response = await axios.get(apiRoute);
             setData(response.data); // Update state with fetched data
             setIsLoading(false); // Set loading to false after data is fetched
         } catch (error) {
@@ -50,6 +50,8 @@ function EventHome() {
                 <EventBox image="party3.jpg"/>
                 <EventBox image="party3.jpg"/>
             </div>
+
+            <button onClick={testRoute()}></button>
         </div>
     );
 
