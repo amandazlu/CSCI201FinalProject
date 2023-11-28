@@ -35,6 +35,7 @@ const Login = () => {
                 console.error('Login failed:', error.response.data);
             }
             else{
+                setErrorMessage('Unknown error');
                 console.error('Error');
             }
         }
@@ -62,7 +63,7 @@ const Login = () => {
                     </div>
                     <div>
                         <label htmlFor="password" className="text-left">Password</label>
-                        <input name="Password" id="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                        <input name="Password" id="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
                     </div>
                     {errorMessage && <div className="error"> {errorMessage} </div>}
                     <div>
