@@ -4,7 +4,8 @@ import './style.css';
 import ProfileHeader from "../ProfileHeader/profileheader";
 import { useNavigate } from "react-router-dom";
 
-const apiRoute = "http://localhost:8080/api/v1/profile";
+const apiRoute = "http://localhost:8080/api/v1/profile/";
+const userRoute = "http://localhost:8080/api/v1/test"
 
 const ProfilePage = () => {
     const navigate = useNavigate();
@@ -24,12 +25,16 @@ const ProfilePage = () => {
 
     const handleLogout = () => setIsLoggedIn(false);
 
+    const [email, setEmail] = useState();
+    const [tickets, setTickets] = useState([]);
 
+    /*
     const tickets = [
         { name: 'Name#1', location: 'Location#1', time: 'Time#1'},
         { name: 'Name#2', location: 'Location#2', time: 'Time#2'},
         { name: 'Name#3', location: 'Location#3', time: 'Time#3'}
     ];
+    */
 
        
         // useEffect(() => {
@@ -48,10 +53,21 @@ const ProfilePage = () => {
        
         
     useEffect(() => { 
-        axios.get(apiRoute).then(response => {
-        console.log(response.data);
-        // setData(response.data);
-        }).catch(error => { console.log('Error fetching data:', error);});
+        axios.get(userRoute).then(response => {
+            let testEmail = response.data.slice(0, -1)
+            testEmail = testEmail.replace(/%40/g, '@');
+            return axios.get(apiRoute, {
+                        params: {
+                        email: testEmail
+                        }
+                    }).then(response => {
+                        console.log(response.data);
+                    }).catch(error => {
+                        console.error('Error:', error);
+                        console.log(email);
+                    });
+        }).catch(error => console.error("Error receiving data: " + error));
+        
     }, []);
 
     // useEffect(() => {
@@ -78,7 +94,7 @@ const ProfilePage = () => {
         content = (
             <div className="container1">
                 <div className="welcome">
-                    <p>Welcome!</p>
+                    <p>{email}</p>
                     <p>USC Email: <input type="email" value="USCEmail" disabled /></p>
                     <p>Password: <input type="password" value="******" disabled /></p>
                 </div>
