@@ -9,7 +9,7 @@ const userRoute = "http://localhost:8080/api/v1/test"
 
 const ProfilePage = () => {
     const navigate = useNavigate();
-    const [isLoggedIn, setIsLoggedIn] = useState(true); // Initialize logged-in state as false
+    const [isLoggedIn, setIsLoggedIn] = useState(false); // Initialize logged-in state as false
     // const [tickets, setTickets] = useState([]); // declare a state variable named tickets in a functional React component, initialized to an empty array, with a setter method setTickets to update its value.
 
     // Dummy function to simulate login/logout
@@ -26,30 +26,7 @@ const ProfilePage = () => {
     const handleLogout = () => setIsLoggedIn(false);
 
     const [email, setEmail] = useState();
-    const [tickets, setTickets] = useState([]);
-
-    /*
-    const tickets = [
-        { name: 'Name#1', location: 'Location#1', time: 'Time#1'},
-        { name: 'Name#2', location: 'Location#2', time: 'Time#2'},
-        { name: 'Name#3', location: 'Location#3', time: 'Time#3'}
-    ];
-    */
-
-       
-        // useEffect(() => {
-        //     axios.get(apiRoute)
-        //       .then(response => {
-        //         // Assuming response.data is an array of objects
-        //         // const user = response.data.find(event => event.id === id);
-        //         // setEventData(event);
-        //         // console.log(event);
-        //       })
-        //       .catch(error => {
-        //         console.log('Error fetching data:', error);
-        //       });
-        // }, [id]);
-       
+    const [tickets, setTickets] = useState([]); // array
        
         
     useEffect(() => { 
@@ -57,9 +34,16 @@ const ProfilePage = () => {
             let testEmail = response.data.slice(0, -1);
             testEmail = testEmail.replace(/%40/g, '@');
             setEmail(testEmail);
+            if (testEmail) {
+                // console.log("changing log status");
+                setIsLoggedIn(true);
+            }
+            else console.log("notchanged");
+            console.log("log?", isLoggedIn);
             return axios.get(apiRoute, {
-                        params: {
-                        email: testEmail
+                        params: 
+                        {
+                            email: testEmail
                         }
                     }).then(response => {
                         console.log(Object.entries(response.data)[0][1]);
@@ -71,47 +55,51 @@ const ProfilePage = () => {
         
     }, []);
 
-    // useEffect(() => {
-    //     const fetchTickets = async () => {
-    //         try {
-    //             const response = await axios.get(`http://localhost:8080/api/v1/profile`);
-    //             console.log(response.data);
-    //             // Assuming the response contains a map with email as key and tickets as value
-    //             const userEmail = Object.keys(response.data)[0]; // Get the first key (email)
-    //             setTickets(response.data[userEmail]); // Set tickets
-    //             setEmail(userEmail); // Set email
-    //         } catch (error) {
-    //             console.error("Error fetching tickets", error);
-    //         }
-    //     };
-
-    //     if (isLoggedIn) {
-    //         fetchTickets();
-    //     }
-    // }, [isLoggedIn]);
 
     let content;
     if (isLoggedIn) {
         content = (
             <div className="container1">
-                <div className="welcome">
-                    <p>
-                    {tickets.map(item => (
-                        <div>
-                        <p>ID: {item.ticketType}</p>
-                        </div>
-                    ))}
-                    </p>
-                    <p>USC Email: <input type="email" value="USCEmail" disabled /></p>
-                    <p>Password: <input type="password" value="******" disabled /></p>
+                <div className="welcome" style = {{fontSize : "3vw", textAlign : "left" , padding : "3%"}}>
+                    <h1>Welcome!</h1>
+                    <p>USC Email: <span>{email}</span></p>
+                    <p>Password: ******</p>
                 </div>
 
-                <div className="ticket">
-                    <p>Your Tickets:</p>
-                    {tickets.map((ticket, index) => (
-                        <div key={index}>{`${ticket.name} ${ticket.location} ${ticket.time}`}</div>
-                    ))}
+                <div className="tickets-container">
+                    <h2>Your Tickets:</h2>
+
+                    <table className="ticket-table">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Ticket Type</th>
+                            <th>Location</th>
+                            <th>Time</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                            {tickets.map((item, index) => (
+                                console.log(item),
+                                <tr key={index} className="ticket-item">
+                                    {/* <td className="ticket-info">{`${item.user.firstName} ${item.user.lastName}`}</td> */}
+                                    <td className="ticket-info">{item.event.eventName}</td>
+                                    <td className="ticket-info">{item.ticketType}</td>
+                                    <td className="ticket-info">{item.event.eventLocation}</td>
+                                    <td className="ticket-info">{item.event.eventDate} {item.event.eventTime}</td>
+
+                                    {/* <p className="ticket-info">Name: {item.user.firstName} {item.user.lastName}</p>
+                                    <p className="ticket-info">Event: {item.event.eventName}</p>
+                                    <p className="ticket-info">Location: {item.event.eventLocation}</p>
+                                    <p className="ticket-info">Time: {item.event.eventTime}</p> */}
+                                </tr>
+                            ))}
+
+                        </tbody>
+                    </table>
                 </div>
+                
                 <button type="button" onClick={handleLogout}>Log Out</button>
             </div>
         );
