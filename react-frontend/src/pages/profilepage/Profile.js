@@ -10,10 +10,6 @@ const userRoute = "http://localhost:8080/api/v1/test"
 const ProfilePage = () => {
     const navigate = useNavigate();
     const [isLoggedIn, setIsLoggedIn] = useState(false); // Initialize logged-in state as false
-    // const [tickets, setTickets] = useState([]); // declare a state variable named tickets in a functional React component, initialized to an empty array, with a setter method setTickets to update its value.
-
-    // Dummy function to simulate login/logout
-    // const handleLogin = () => setIsLoggedIn(true);
 
     const handleLogin = () => {
         navigate('/'); // redirect to the path of login page
@@ -108,8 +104,12 @@ const ProfilePage = () => {
             <div className="container2">
                 <p className="welcome-message" style = {{fontSize : "3vw", textAlign : "left" , padding : "3%"}}>Welcome!</p>
                 <p style = {{fontSize : "2vw", textAlign : "left" , padding : "3%"}}>You are currently a guest user, please sign up or sign in for reservation and profile service.</p>
-                <button type="button" onClick={handleLogin}>Sign in</button>
-                <button type="button" onClick={handleSignup}>Sign up</button>
+                
+                <div className="buttons-container">
+                    <button type="button" onClick={handleLogin}>Sign in</button>
+                    <button type="button" onClick={handleSignup}>Sign up</button>
+                </div>
+
             </div>
         );
     }

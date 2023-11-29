@@ -60,35 +60,78 @@ button[type="button"] {
   }
 }
 
+.container2 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; 
+  justify-content: center;
+  padding: 3%;
+  font-size: 2vw; 
+}
 
-/*
+.welcome-message {
+  font-size: 3vw; 
+  font-weight: bold; 
+  text-align: left;
+  margin-bottom: 1%; 
+}
 
-  .ticket-item {
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin: 10px;
-    background-color: #f9f9f9;
-    box-shadow: 2px 2px 5px #888888;
-  }
-  
-  .ticket-info {
-    font-size: 16px;
-    margin: 5px 0;
+.container2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3%;
+  font-size: 2vw;
+}
+
+.welcome-message {
+  font-size: 3vw;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.container2 p {
+  font-size: 2vw;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+button[type="button"] {
+  padding: 10px 20px;
+  font-size: 1.2em;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+button[type="button"]:last-child {
+  margin-right: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .container2 {
+    align-items: center; 
+    font-size: 5vw;
   }
 
-  button {
-    background-color: #A2A5EE;
-    color: black;
-    font-size: 24px;
-    font-style: bold;
-    border: none;
-    margin: 10px;
-    cursor: pointer;
-    width: 202px;
-    height: 63px
-  }
-  button:hover {
-    background-color: #A2A5EE;
+  .welcome-message {
+    font-size: 6vw;
   }
 
-  */
+  .buttons-container {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  button[type="button"] {
+    margin: 10px 0; /* Add some vertical margin for touch targets */
+  }
+}
