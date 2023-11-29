@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties.Authentication;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -57,7 +58,6 @@ public class LoginController {
 	public ResponseEntity<String> login(@RequestParam("email") String email, @RequestParam("password") String password) {
 		Optional<User> userOptional = userRepository.findById(email);
 		
-		
 		if (!userOptional.isPresent()) {
 			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid email or password");
 		}
@@ -74,7 +74,6 @@ public class LoginController {
 		HttpSession mySession = httpServletRequest.getSession();
 		mySession.setAttribute(email, password);
 		
-
 	    return ResponseEntity.ok("Login Successful");
 	}
 }
