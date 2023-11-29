@@ -62,6 +62,11 @@ public class ProfilePageController {
     }
     */
 
+	@GetMapping("/tickets")
+	public List<Ticket> getAllTickets(){
+		return ticketRepository.findAll();
+	}
+	
     @GetMapping("/")
 	public ResponseEntity<Map<User, Set<Ticket>>> getUser(@RequestParam("email") String email){
         User user = userRepository.findById(email)
