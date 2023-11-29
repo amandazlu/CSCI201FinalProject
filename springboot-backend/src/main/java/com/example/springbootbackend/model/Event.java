@@ -116,7 +116,7 @@ public class Event {
 		return genad_tickets_left;
 	}
 	public void setGenadTicketsLeft(int num) {
-		this.floor_tickets_left = num;
+		this.genad_tickets_left = num;
 	}
     public float getFloorTicketPrice() {
 		return floor_ticket_price;
