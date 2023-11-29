@@ -23,6 +23,10 @@ const Login = () => {
             });
             if (response.status === 200) {
                 // Handle successful login here, e.g., store token in local storage
+                const second_response = axios.post("http://localhost:8080/api/v1/test", email).then(response => {
+                    console.log("Validate");
+                });
+
                 navigate('/event-home');
                 console.log('Login successful');
             } else {

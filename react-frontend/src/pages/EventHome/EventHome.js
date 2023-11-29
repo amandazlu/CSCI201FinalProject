@@ -7,6 +7,8 @@ import axios from 'axios';
 
 const apiRoute = "http://localhost:8080/api/v1/homepage";
 
+const apiRouteTest = "http://localhost:8080/api/v1/test";
+
 function EventHome() {
     
 
@@ -18,15 +20,34 @@ function EventHome() {
         }).catch(error => { console.log('Error fetching data:', error);});
     }, []);
 
+    function routeTest() {
+        axios.get(apiRouteTest).then(response => {
+            console.log("Route");
+            console.log(response.data);
+        });
+        return;
+    }
+
+    function validateTest() {
+        axios.post(apiRouteTest, data[0].eventName).then(response => {
+            console.log("Validate");
+            console.log(response.data);
+        });
+        return;
+    }
+
     return (
         <div>
             <Header/>
             
             <div className="horizontal-slider">
                 {data.map((item) => (
-                    <EventBox image="party1.jpg" key = {item.id} id = {item.id} name = {item.eventName} location = {item.eventLocation} message = {item.eventDescription}/>
+                    <EventBox class="random-img" image="party1.jpg" key = {item.id} id = {item.id} name = {item.eventName} location = {item.eventLocation} message = {item.eventDescription}/>
                 ))}
             </div>
+
+            <button onClick={routeTest}>Test</button>
+            <button onClick={validateTest}>Validate</button>
         </div>
     );
 
