@@ -51,7 +51,8 @@ function Event(props) {
             });
             if (response.status === 200) {
                 // Handle successful reservation here
-				alert('Reservation successful');
+		alert('Reservation successful');
+		window.location.reload();
             }
         } catch (error) {
             console.log('Error making reservation:', error);
