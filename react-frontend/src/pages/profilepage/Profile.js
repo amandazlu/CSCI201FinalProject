@@ -54,17 +54,18 @@ const ProfilePage = () => {
         
     useEffect(() => { 
         axios.get(userRoute).then(response => {
-            let testEmail = response.data.slice(0, -1)
+            let testEmail = response.data.slice(0, -1);
             testEmail = testEmail.replace(/%40/g, '@');
+            setEmail(testEmail);
             return axios.get(apiRoute, {
                         params: {
                         email: testEmail
                         }
                     }).then(response => {
-                        console.log(response.data);
+                        console.log(Object.entries(response.data)[0][1]);
+                        setTickets(Object.entries(response.data)[0][1]);
                     }).catch(error => {
                         console.error('Error:', error);
-                        console.log(email);
                     });
         }).catch(error => console.error("Error receiving data: " + error));
         
@@ -94,7 +95,13 @@ const ProfilePage = () => {
         content = (
             <div className="container1">
                 <div className="welcome">
-                    <p>{email}</p>
+                    <p>
+                    {tickets.map(item => (
+                        <div>
+                        <p>ID: {item.ticketType}</p>
+                        </div>
+                    ))}
+                    </p>
                     <p>USC Email: <input type="email" value="USCEmail" disabled /></p>
                     <p>Password: <input type="password" value="******" disabled /></p>
                 </div>
