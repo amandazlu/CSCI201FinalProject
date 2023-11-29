@@ -7,8 +7,9 @@ import axios from 'axios';
 
 function Event(props) {
 	const {state} = useLocation();
-	const {id} = state;
+	const {id} = state;//eventID
 	const [eventData, setEventData] = useState(null);
+	const [userEmail, setUserEmail] = useState("");
 
     useEffect(() => {
 	  if (id) {
@@ -24,8 +25,38 @@ function Event(props) {
 	        console.log('Error fetching data:', error);
 	      });
 	  }
+	  routeTest();
 	}, [id]);
 
+	const apiRouteTest = "http://localhost:8080/api/v1/test";
+	function routeTest() {
+        axios.get(apiRouteTest).then(response => {
+			setUserEmail(decodeURIComponent(response.data).replace(/=$/, ''));
+        });
+        return;
+    }
+
+	const reserveTicket = async (ticketType) => {
+        const apiRoute = `http://localhost:8080/api/v1/homepage/${id}`;
+        try {
+			console.log("ticketType: ", ticketType);
+			console.log("useremail:", userEmail);
+			console.log("eventID: ", id);
+            const response = await axios.post(apiRoute, null, {
+                params: {
+                    email: userEmail,
+                    ticketType: ticketType,
+                    eventId: id,
+                },
+            });
+            if (response.status === 200) {
+                // Handle successful reservation here
+				alert('Reservation successful');
+            }
+        } catch (error) {
+            console.log('Error making reservation:', error);
+        }
+    };
 
 	const navigate = useNavigate;
 	const eventName = eventData ? eventData.eventName : "Loading...";
@@ -66,19 +97,19 @@ function Event(props) {
 			            <p className="event-header" style = {{fontWeight: "bold", fontSize: "1.5vw", textAlign: "left", padding: "3%", color:"black"}}>Floor Tickets</p>
 			            <p className="event-price" style = {{fontWeight: "bold", fontSize: "1vw", textAlign: "left", padding: "3%", color:"black"}}>Price: ${floorTicketPrice}</p>
 			            <p className="event-location" style = {{fontWeight: "bold", fontSize: "1vw", textAlign: "left", padding: "3%", color:"black"}}>{floorTicketsLeft} available</p>
-			            <button className="reserve-button">Reserve</button>
+			            <button className="reserve-button" onClick={() => reserveTicket('floor')}>Reserve</button>
 			        </div>
 			        <div className="ticket">
 			            <p className="event-header" style = {{fontWeight: "bold", fontSize: "1.5vw", textAlign: "left", padding: "3%", color:"black"}}>General Admission</p>
 			            <p className="event-price" style = {{fontWeight: "bold", fontSize: "1vw", textAlign: "left", padding: "3%", color:"black"}}>Price: ${genadTicketPrice}</p>
 			            <p className="event-location" style = {{fontWeight: "bold", fontSize: "1vw", textAlign: "left", padding: "3%", color:"black"}}>{genadTicketsLeft} available</p>
-			            <button className="reserve-button">Reserve</button>
+			            <button className="reserve-button" onClick={() => reserveTicket('genad')}>Reserve</button>
 			        </div>
 			        <div className="ticket">
 			            <p className="event-header" style = {{fontWeight: "bold", fontSize: "1.5vw", textAlign: "left", padding: "3%", color:"black"}}>VIP Admission</p>
 			            <p className="event-price" style = {{fontWeight: "bold", fontSize: "1vw", textAlign: "left", padding: "3%", color:"black"}}>Price: ${vipTicketPrice}</p>
 			            <p className="event-location" style = {{fontWeight: "bold", fontSize: "1vw", textAlign: "left", padding: "3%", color:"black"}}>{vipTicketsLeft} available</p>
-			            <button className="reserve-button">Reserve</button>
+			            <button className="reserve-button" onClick={() => reserveTicket('vip')}>Reserve</button>
 			        </div>
 			    </div>
 			</div>
