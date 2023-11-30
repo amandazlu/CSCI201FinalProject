@@ -30,11 +30,14 @@ const ProfilePage = () => {
             let testEmail = response.data.slice(0, -1);
             testEmail = testEmail.replace(/%40/g, '@');
             setEmail(testEmail);
-            if (testEmail) {
+            if (testEmail != "null") {
                 // console.log("changing log status");
                 setIsLoggedIn(true);
             }
-            else console.log("notchanged");
+            else{
+               //console.log("notchanged"); 
+               setIsLoggedIn(false);
+            } 
             console.log("log?", isLoggedIn);
             return axios.get(apiRoute, {
                         params: 

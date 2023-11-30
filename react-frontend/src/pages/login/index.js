@@ -51,7 +51,28 @@ const Login = () => {
     };
 
     const handleClick2 = async(e) => {
-        navigate('/event-home');
+        try {
+            const response = await axios.post('http://localhost:8080/api/v1/test', "null");
+            if (response.status === 200) {
+                // Handle successful login here, e.g., store token in local storage
+
+                navigate('/event-home');
+                console.log('Guest Login successful');
+            } else {
+                // Handle unsuccessful login
+                setErrorMessage(response.data);
+                console.error('Guest Login failed:', response.data);
+            }
+        } catch (error) {
+            if(error.response && error.response.status === 401){
+                setErrorMessage(error.response.data);
+                console.error('Login failed:', error.response.data);
+            }
+            else{
+                setErrorMessage('Unknown error');
+                console.error('Error');
+            }
+        }
     };
 
     return (
