@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'; // install axios to make an HTTP request to your Spring Boot backend
 import './profilestyle.css';
-import ProfileHeader from "../ProfileHeader/profileheader";
+// import ProfileHeader from "../ProfileHeader/profileheader";
+import Header from "../Header/Header";
 import { useNavigate } from "react-router-dom";
 
 const apiRoute = "http://localhost:8080/api/v1/profile/";
-const userRoute = "http://localhost:8080/api/v1/test"
+const userRoute = "http://localhost:8080/api/v1/test";
+const deleteRoute = "http://localhost:8080/api/v1/profile/delete";
 
 const ProfilePage = () => {
     const navigate = useNavigate();
@@ -30,29 +32,63 @@ const ProfilePage = () => {
             let testEmail = response.data.slice(0, -1);
             testEmail = testEmail.replace(/%40/g, '@');
             setEmail(testEmail);
-            if (testEmail != "null") {
+            if (testEmail) {
                 // console.log("changing log status");
                 setIsLoggedIn(true);
             }
-            else{
-               //console.log("notchanged"); 
-               setIsLoggedIn(false);
-            } 
-            console.log("log?", isLoggedIn);
-            return axios.get(apiRoute, {
-                        params: 
-                        {
-                            email: testEmail
-                        }
-                    }).then(response => {
-                        console.log(Object.entries(response.data)[0][1]);
-                        setTickets(Object.entries(response.data)[0][1]);
-                    }).catch(error => {
-                        console.error('Error:', error);
-                    });
-        }).catch(error => console.error("Error receiving data: " + error));
-        
+            
+            return fetchTickets(testEmail)
+            // axios.get(apiRoute, {
+            //     params: 
+            //     {
+            //         email: testEmail
+            //     }
+            // })
+            // .then(response => {
+            //     console.log(Object.entries(response.data)[0][1]);
+            //     setTickets(Object.entries(response.data)[0][1]);
+            // })
+            // .catch(error => {
+            //     console.error('Error:', error);
+            // });
+        })
+        .catch(error => console.error("Error receiving data: " + error));
     }, []);
+
+    function fetchTickets(testEmail) {
+        axios.get(apiRoute, {
+            params: 
+            {
+                email: testEmail
+            }
+        })
+        .then(response => {
+            console.log(Object.entries(response.data)[0][1]);
+            setTickets(Object.entries(response.data)[0][1]);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+
+    function deleteTicket(email, ticketId) {
+        axios.delete(deleteRoute, 
+        {
+            params: 
+            {
+                email: email,
+                ticketId: ticketId
+            }
+        }).then(response => {
+            
+            console.log('Ticket Deleted:', response);
+            window.location.reload();
+            fetchTickets(email);
+        })
+        .catch(error => {
+            console.error('Error deleting ticket:', error);
+        });
+    }
 
 
     let content;
@@ -92,6 +128,10 @@ const ProfilePage = () => {
                                     <p className="ticket-info">Event: {item.event.eventName}</p>
                                     <p className="ticket-info">Location: {item.event.eventLocation}</p>
                                     <p className="ticket-info">Time: {item.event.eventTime}</p> */}
+
+                                    <td className="ticket-info">
+                                        <button className="profile-delete-button" onClick={() => deleteTicket(item.user.email, parseFloat(item.id))}>Delete Ticket</button>
+                                    </td>
                                 </tr>
                             ))}
 
@@ -119,9 +159,9 @@ const ProfilePage = () => {
 
     return (
         <div>
-            <ProfileHeader />
+            <Header />
             <br/>
-			<br/>
+   <br/>
             {content}
         </div>
     );
