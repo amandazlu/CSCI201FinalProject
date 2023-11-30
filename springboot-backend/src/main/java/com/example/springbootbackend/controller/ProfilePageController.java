@@ -77,7 +77,7 @@ public class ProfilePageController {
 	}
 
     // delete ticket rest api
-	@DeleteMapping("/")
+	@DeleteMapping("/delete")
 	public ResponseEntity<Map<String, Boolean>> deleteTicket(@RequestParam("email") String email, @RequestParam("ticketId") Long id){
 		Ticket ticket = ticketRepository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Ticket not exist with id :" + id));
