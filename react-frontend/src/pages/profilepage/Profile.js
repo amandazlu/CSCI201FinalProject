@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'; // install axios to make an HTTP request to your Spring Boot backend
-import './style.css';
+import './profilestyle.css';
 import ProfileHeader from "../ProfileHeader/profileheader";
 import { useNavigate } from "react-router-dom";
 
@@ -55,17 +55,17 @@ const ProfilePage = () => {
     let content;
     if (isLoggedIn) {
         content = (
-            <div className="container1">
+            <div className="profile-container1">
                 <div className="welcome" style = {{fontSize : "3vw", textAlign : "left" , padding : "3%"}}>
                     <h1>Welcome!</h1>
                     <p>USC Email: <span>{email}</span></p>
                     <p>Password: ******</p>
                 </div>
 
-                <div className="tickets-container">
+                <div className="profile-tickets-container">
                     <h2>Your Tickets:</h2>
 
-                    <table className="ticket-table">
+                    <table className="profile-ticket-table">
                         <thead>
                         <tr>
                             <th>Name</th>
@@ -101,11 +101,11 @@ const ProfilePage = () => {
         );
     } else {
         content = (
-            <div className="container2">
+            <div className="profile-container2">
                 <p className="welcome-message" style = {{fontSize : "3vw", textAlign : "left" , padding : "3%"}}>Welcome!</p>
                 <p style = {{fontSize : "2vw", textAlign : "left" , padding : "3%"}}>You are currently a guest user, please sign up or sign in for reservation and profile service.</p>
                 
-                <div className="buttons-container">
+                <div className="profile-buttons-container">
                     <button type="button" onClick={handleLogin}>Sign in</button>
                     <button type="button" onClick={handleSignup}>Sign up</button>
                 </div>
