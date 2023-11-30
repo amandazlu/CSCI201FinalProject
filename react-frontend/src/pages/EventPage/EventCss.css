@@ -39,16 +39,20 @@ body {
     top: -2em;
 }
 
-.type {
+.apple {
     width: 80%;
     position: relative;
     top: -3em;
     margin-left: 10%;
 }
 
-.ticket {
-    width: 5.5em;
-    height: 3em;
+.fruits {
+    display: flex;
+}
+
+.pear {
+    width: 15em;
+    height: 10em;
     padding: 3%;
     margin: 3%;
     background-color: #EBEFFF;
@@ -58,11 +62,7 @@ body {
     color: black;
 }
 
-.grid {
-    margin-left: 13%;
-}
-
-.ticket button {
+.pear button {
     background-color: #A2A5EE;
     color: white;
     border: none;
@@ -73,13 +73,13 @@ body {
     cursor: pointer;
     border-radius: 0.8vw;
     position: absolute;
-    bottom: 0;
-    right: 5%;
+    bottom: 1em;
+    right: 1em;
     font-size: 1vw;
     text-align: center;
 }
 
 
-.ticket button:hover {
+.pear button:hover {
     background-color: #555;
 }
