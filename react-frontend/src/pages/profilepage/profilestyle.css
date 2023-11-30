@@ -50,6 +50,11 @@
   height: 63px;
 } 
 
+.profile-delete-button {
+  background-color: #A2A5EE;
+  border: none;
+  color: black;
+}
 @media screen and (max-width: 768px) {
   .welcome {
     font-size: 5vw;
