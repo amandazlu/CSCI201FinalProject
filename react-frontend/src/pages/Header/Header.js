@@ -16,10 +16,14 @@ function Header() {
     const [home, setHome] = useState(false);
 
     useEffect(() => { 
+
+        if(sessionStorage.getItem('user') === null) {setLoggedIn(false);}
+        /*
         axios.get(userRoute).then(response => {
             let user = response.data.slice(0, -1);
             if (user === "null") {setLoggedIn(false);}
         }).catch(error => console.error("Error receiving data: " + error));
+        */
     }, []);
 
     const showDropDown = () => {
@@ -28,14 +32,17 @@ function Header() {
     };
 
     const logOutFunction = () => {
+        sessionStorage.removeItem('user');
+        /*
         axios.post(userRoute, "null").then(response => {
                     console.log("Validate");
         });
+        */
         setLoggedIn(false);
         setLogin(true);
     };
 
-    if (profile) { return <Navigate to="/profile"/> }
+    if (profile && !(window.location.href === "http://localhost:3000/profile")) { return <Navigate to="/profile"/> }
     if (signIn) {return <Navigate to="/"/>}
     if (signUp) { return <Navigate to="/sign-up"/> }
     if (goLogin) {return <Navigate to="/"/>}

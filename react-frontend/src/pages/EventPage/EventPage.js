@@ -9,7 +9,7 @@ function Event(props) {
 	const {state} = useLocation();
 	const {id} = state;//eventID
 	const [eventData, setEventData] = useState(null);
-	const [userEmail, setUserEmail] = useState("");
+	const [userEmail, setUserEmail] = useState();
 
     useEffect(() => {
 	  if (id) {
@@ -30,9 +30,13 @@ function Event(props) {
 
 	const apiRouteTest = "http://localhost:8080/api/v1/test";
 	function routeTest() {
+
+		setUserEmail(sessionStorage.getItem('user'));
+		/*
         axios.get(apiRouteTest).then(response => {
 			setUserEmail(decodeURIComponent(response.data).replace(/=$/, ''));
         });
+		*/
         return;
     }
 
@@ -42,7 +46,7 @@ function Event(props) {
 			console.log("ticketType: ", ticketType);
 			console.log("useremail:", userEmail);
 			console.log("eventID: ", id);
-			if (userEmail=="null") {
+			if (userEmail === null) {
 				alert("You must be signed in to reserve tickets.");
 				return;
 			}

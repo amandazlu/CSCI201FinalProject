@@ -28,6 +28,10 @@ const ProfilePage = () => {
        
         
     useEffect(() => { 
+        setEmail(sessionStorage.getItem('user'));
+        fetchTickets(sessionStorage.getItem('user'));
+        if(email !== null) {setIsLoggedIn(true);}
+        /*
         axios.get(userRoute).then(response => {
             let testEmail = response.data.slice(0, -1);
             testEmail = testEmail.replace(/%40/g, '@');
@@ -39,6 +43,7 @@ const ProfilePage = () => {
             return fetchTickets(testEmail)
         })
         .catch(error => console.error("Error receiving data: " + error));
+        */
     }, []);
 
     function fetchTickets(testEmail) {

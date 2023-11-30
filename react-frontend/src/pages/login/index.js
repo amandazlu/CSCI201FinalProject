@@ -13,6 +13,9 @@ const Login = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
+
+            sessionStorage.setItem('user', email);
+
             // console.log('email: ', email);
             // console.log('password: ', password);
             const response = await axios.post('http://localhost:8080/api/v1/login', null, {
@@ -23,9 +26,11 @@ const Login = () => {
             });
             if (response.status === 200) {
                 // Handle successful login here, e.g., store token in local storage
+                /*
                 const second_response = axios.post("http://localhost:8080/api/v1/test", email).then(response => {
                     console.log("Validate");
                 });
+                */
 
                 navigate('/event-home');
                 console.log('Login successful');
