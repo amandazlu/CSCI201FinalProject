@@ -38,7 +38,7 @@
   border-bottom: 1px solid #ddd;
 }
 
-button[type="button"] {
+/* button[type="button"] {
   background-color: #A2A5EE;
   border: none;
   color: black;
@@ -48,7 +48,7 @@ button[type="button"] {
   cursor: pointer;
   width: 202px;
   height: 63px;
-}
+} */
 
 @media screen and (max-width: 768px) {
   .welcome {
