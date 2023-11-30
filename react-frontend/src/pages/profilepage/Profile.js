@@ -99,7 +99,7 @@ const ProfilePage = () => {
                     </table>
                 </div>
                 
-                <button type="button" onClick={handleLogout}>Log Out</button>
+                <button className="profile-logout-button" type="button" onClick={handleLogout}>Log Out</button>
             </div>
         );
     } else {
@@ -109,8 +109,8 @@ const ProfilePage = () => {
                 <p style = {{fontSize : "2vw", textAlign : "left" , padding : "3%"}}>You are currently a guest user, please sign up or sign in for reservation and profile service.</p>
                 
                 <div className="profile-buttons-container">
-                    <button type="button" onClick={handleLogin}>Sign in</button>
-                    <button type="button" onClick={handleSignup}>Sign up</button>
+                    <button className="profile-signin-button" type="button" onClick={handleLogin}>Sign in</button>
+                    <button className="profile-signup-button" type="button" onClick={handleSignup}>Sign up</button>
                 </div>
 
             </div>
