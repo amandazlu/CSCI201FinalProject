@@ -38,7 +38,7 @@
   border-bottom: 1px solid #ddd;
 }
 
-/* button[type="button"] {
+ .profile-logout-button {
   background-color: #A2A5EE;
   border: none;
   color: black;
@@ -48,7 +48,7 @@
   cursor: pointer;
   width: 202px;
   height: 63px;
-} */
+} 
 
 @media screen and (max-width: 768px) {
   .welcome {
@@ -105,12 +105,33 @@
   margin-bottom: 20px;
 }
 
-/* button[type="button"] {
+.profile-signin-button {
+  background-color: #A2A5EE;
+  border: none;
+  color: black;
+  margin-top: 20px;
+  padding: 10px 20px;
+  width: 202px;
+  height: 63px;
   padding: 10px 20px;
   font-size: 1.2em;
   cursor: pointer;
   margin-right: 10px;
-} */
+} 
+
+.profile-signup-button {
+  background-color: #A2A5EE;
+  border: none;
+  color: black;
+  margin-top: 20px;
+  padding: 10px 20px;
+  width: 202px;
+  height: 63px;
+  padding: 10px 20px;
+  font-size: 1.2em;
+  cursor: pointer;
+  margin-right: 10px;
+} 
 
 /* button[type="button"]:last-child {
   margin-right: 0;
