@@ -42,6 +42,10 @@ function Event(props) {
 			console.log("ticketType: ", ticketType);
 			console.log("useremail:", userEmail);
 			console.log("eventID: ", id);
+			if (userEmail==null) {
+				alert("You must be signed in to reserve any tickets.");
+				return;
+			}
             const response = await axios.post(apiRoute, null, {
                 params: {
                     email: userEmail,
@@ -55,6 +59,7 @@ function Event(props) {
 		window.location.reload();
             }
         } catch (error) {
+			alert("Invalid Reservation.")
             console.log('Error making reservation:', error);
         }
     };
