@@ -42,8 +42,8 @@ function Event(props) {
 			console.log("ticketType: ", ticketType);
 			console.log("useremail:", userEmail);
 			console.log("eventID: ", id);
-			if (userEmail==null) {
-				alert("You must be signed in to reserve any tickets.");
+			if (userEmail=="null") {
+				alert("You must be signed in to reserve tickets.");
 				return;
 			}
             const response = await axios.post(apiRoute, null, {

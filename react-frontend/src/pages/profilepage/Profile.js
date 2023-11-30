@@ -58,23 +58,11 @@ const ProfilePage = () => {
     let content;
     if (isLoggedIn) {
         content = (
-<<<<<<< HEAD
             <div className="profile-container1">
                 <div className="welcome" style = {{fontSize : "3vw", textAlign : "left" , padding : "3%"}}>
                     <h1>Welcome!</h1>
                     <p>USC Email: <span>{email}</span></p>
                     <p>Password: ******</p>
-=======
-            <div className="container1">
-                <div className="welcome">
-                    {tickets.map(item => (
-                            <div>
-                                <p>ID: {item.ticketType}</p>
-                            </div>
-                        ))}
-                    <p>USC Email: <input type="email" value="USCEmail" disabled /></p>
-                    <p>Password: <input type="password" value="******" disabled /></p>
->>>>>>> 01683a1 (Fixed Header)
                 </div>
 
                 <div className="profile-tickets-container">
