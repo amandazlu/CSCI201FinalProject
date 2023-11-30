@@ -42,12 +42,9 @@ function EventHome() {
             
             <div className="horizontal-slider">
                 {data.map((item) => (
-                    <EventBox class="random-img" image="party1.jpg" key = {item.id} id = {item.id} name = {item.eventName} location = {item.eventLocation} message = {item.eventDescription}/>
+                    <EventBox image="party1.jpg" key = {item.id} id = {item.id} name = {item.eventName} location = {item.eventLocation} message = {item.eventDescription}/>
                 ))}
             </div>
-
-            <button onClick={routeTest}>Test</button>
-            <button onClick={validateTest}>Validate</button>
         </div>
     );
 

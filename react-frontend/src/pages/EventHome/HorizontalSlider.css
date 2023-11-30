@@ -1,6 +1,6 @@
 .horizontal-slider {
     display: flex;
-    margin-left : 8vw;
+    margin-left : 10vw;
     overflow-x: auto;
     scroll-behavior: smooth;
     width: 80%;

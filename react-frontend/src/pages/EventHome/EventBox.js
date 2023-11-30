@@ -29,7 +29,7 @@ function EventBox(props) {
                             <button className = "reserve-button" onClick={() => {setProfile(true)}}>Reserve</button>
                         </div>
                 </div>
-            </div>
+        </div>
     );
 }
 
