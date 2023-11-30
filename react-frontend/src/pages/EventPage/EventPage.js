@@ -91,22 +91,22 @@ function Event(props) {
 					<p style = {{fontSize : "1vw", textAlign : "left" , padding : "3%"}}>{eventDescrip}</p>
 				</div>
 			</div>
-			<div className="type">
+			<div className="apple">
 				<p style = {{fontWeight: "bold", fontSize: "3vw", textAlign: "left", padding: "3%"}}>Tickets</p>
-			    <div className="grid">
-			        <div className="ticket">
+			    <div className="fruits">
+			        <div className="pear">
 			            <p className="event-header" style = {{fontWeight: "bold", fontSize: "1.5vw", textAlign: "left", padding: "3%", color:"black"}}>Floor Tickets</p>
 			            <p className="event-price" style = {{fontWeight: "bold", fontSize: "1vw", textAlign: "left", padding: "3%", color:"black"}}>Price: ${floorTicketPrice}</p>
 			            <p className="event-location" style = {{fontWeight: "bold", fontSize: "1vw", textAlign: "left", padding: "3%", color:"black"}}>{floorTicketsLeft} available</p>
 			            <button className="reserve-button" onClick={() => reserveTicket('floor')}>Reserve</button>
 			        </div>
-			        <div className="ticket">
+			        <div className="pear">
 			            <p className="event-header" style = {{fontWeight: "bold", fontSize: "1.5vw", textAlign: "left", padding: "3%", color:"black"}}>General Admission</p>
 			            <p className="event-price" style = {{fontWeight: "bold", fontSize: "1vw", textAlign: "left", padding: "3%", color:"black"}}>Price: ${genadTicketPrice}</p>
 			            <p className="event-location" style = {{fontWeight: "bold", fontSize: "1vw", textAlign: "left", padding: "3%", color:"black"}}>{genadTicketsLeft} available</p>
 			            <button className="reserve-button" onClick={() => reserveTicket('genad')}>Reserve</button>
 			        </div>
-			        <div className="ticket">
+			        <div className="pear">
 			            <p className="event-header" style = {{fontWeight: "bold", fontSize: "1.5vw", textAlign: "left", padding: "3%", color:"black"}}>VIP Admission</p>
 			            <p className="event-price" style = {{fontWeight: "bold", fontSize: "1vw", textAlign: "left", padding: "3%", color:"black"}}>Price: ${vipTicketPrice}</p>
 			            <p className="event-location" style = {{fontWeight: "bold", fontSize: "1vw", textAlign: "left", padding: "3%", color:"black"}}>{vipTicketsLeft} available</p>
