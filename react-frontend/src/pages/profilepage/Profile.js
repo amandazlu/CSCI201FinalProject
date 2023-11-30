@@ -33,24 +33,10 @@ const ProfilePage = () => {
             testEmail = testEmail.replace(/%40/g, '@');
             setEmail(testEmail);
             if (testEmail) {
-                // console.log("changing log status");
                 setIsLoggedIn(true);
             }
             
             return fetchTickets(testEmail)
-            // axios.get(apiRoute, {
-            //     params: 
-            //     {
-            //         email: testEmail
-            //     }
-            // })
-            // .then(response => {
-            //     console.log(Object.entries(response.data)[0][1]);
-            //     setTickets(Object.entries(response.data)[0][1]);
-            // })
-            // .catch(error => {
-            //     console.error('Error:', error);
-            // });
         })
         .catch(error => console.error("Error receiving data: " + error));
     }, []);
@@ -123,11 +109,6 @@ const ProfilePage = () => {
                                     <td className="ticket-info">{item.ticketType}</td>
                                     <td className="ticket-info">{item.event.eventLocation}</td>
                                     <td className="ticket-info">{item.event.eventDate} {item.event.eventTime}</td>
-
-                                    {/* <p className="ticket-info">Name: {item.user.firstName} {item.user.lastName}</p>
-                                    <p className="ticket-info">Event: {item.event.eventName}</p>
-                                    <p className="ticket-info">Location: {item.event.eventLocation}</p>
-                                    <p className="ticket-info">Time: {item.event.eventTime}</p> */}
 
                                     <td className="ticket-info">
                                         <button className="profile-delete-button" onClick={() => deleteTicket(item.user.email, parseFloat(item.id))}>Delete Ticket</button>
