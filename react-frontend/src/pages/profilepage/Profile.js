@@ -30,20 +30,10 @@ const ProfilePage = () => {
     useEffect(() => { 
         setEmail(sessionStorage.getItem('user'));
         fetchTickets(sessionStorage.getItem('user'));
-        if(email !== null) {setIsLoggedIn(true);}
-        /*
-        axios.get(userRoute).then(response => {
-            let testEmail = response.data.slice(0, -1);
-            testEmail = testEmail.replace(/%40/g, '@');
-            setEmail(testEmail);
-            if (testEmail) {
-                setIsLoggedIn(true);
-            }
-            
-            return fetchTickets(testEmail)
-        })
-        .catch(error => console.error("Error receiving data: " + error));
-        */
+
+        if(sessionStorage.getItem('user') !== null) {
+            setIsLoggedIn(true);
+        }
     }, []);
 
     function fetchTickets(testEmail) {
@@ -124,8 +114,6 @@ const ProfilePage = () => {
                         </tbody>
                     </table>
                 </div>
-                
-                <button className="profile-logout-button" type="button" onClick={handleLogout}>Log Out</button>
             </div>
         );
     } else {
