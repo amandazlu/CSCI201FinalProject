@@ -46,7 +46,10 @@ function Header() {
     if (signIn) {return <Navigate to="/"/>}
     if (signUp) { return <Navigate to="/sign-up"/> }
     if (goLogin) {return <Navigate to="/"/>}
-    if (home) {return <Navigate to = "/"/>}
+    if (home) {
+        const isEventHome = window.location.pathname === '/event-home';
+        if (!isEventHome) {return <Navigate to = "/event-home"/>}
+    }
 
     return (
     <div>
